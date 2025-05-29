@@ -1,0 +1,153 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Rule: Generating Mobile Application Task List from a PRD
+
+## Goal
+
+To guide an AI assistant in creating a detailed, step-by-step task list for implementing a **mobile application** using Vue.js with Capacitor, Ionic, or Quasar, emphasizing native mobile patterns, touch interactions, and mobile-specific optimizations within an Nx monorepo structure.
+
+## Target Platform
+
+**Mobile Applications** - Focus on:
+- Native mobile UI patterns and gestures
+- Touch-optimized interactions and animations
+- Mobile performance optimization and battery efficiency
+- Native device API integration (camera, GPS, sensors)
+- Offline-first architecture and data synchronization
+- App store deployment and mobile-specific security
+- Cross-platform mobile compatibility (iOS/Android)
+
+## Mobile-Specific Considerations
+
+### Native Integration
+- **Device APIs:** Camera, GPS, accelerometer, biometric authentication
+- **Platform Integration:** Push notifications, background tasks, deep linking
+- **Hardware Access:** Battery optimization, network detection, device information
+- **Mobile Storage:** Secure storage, local databases, file system access
+
+### User Experience
+- **Touch Interactions:** Swipe gestures, pull-to-refresh, touch feedback
+- **Mobile Navigation:** Tab bars, drawer navigation, modal patterns
+- **Performance:** 60fps animations, smooth scrolling, memory optimization
+- **Responsive Design:** Adaptive layouts for different screen sizes and orientations
+
+### Mobile-First Features
+- **Offline Capabilities:** Data sync, queue management, conflict resolution
+- **Progressive Loading:** Skeleton screens, infinite scroll, image optimization
+- **Security:** Biometric authentication, secure storage, certificate pinning
+- **Accessibility:** Mobile screen readers, voice control, large text support
+
+## Process
+
+1.  **Receive PRD Reference:** The user points the AI to a specific PRD file for mobile application
+2.  **Analyze PRD for Mobile Patterns:** Focus on mobile-specific requirements like touch interactions, native APIs, and mobile UX patterns
+3.  **Phase 1: Generate Mobile-Focused Parent Tasks:** Create 10-14 high-level tasks optimized for mobile development patterns
+4.  **Wait for Confirmation:** Pause and wait for user to respond with "Go"
+5.  **Phase 2: Generate Mobile Sub-Tasks:** Break down each parent task with mobile-specific patterns, Capacitor integration, and native mobile features
+6.  **Identify Mobile Architecture:** Focus on native API services, mobile-optimized stores, and touch interaction handlers
+7.  **Generate Final Output:** Combine tasks with mobile deployment and app store considerations
+
+## Output Format
+
+The generated task list _must_ follow this structure with mobile-specific components:
+
+```markdown
+## Relevant Components & Architecture
+
+### Vue Mobile Components
+- **MobileNav** - Tab bar and drawer navigation with native mobile patterns
+- **TouchGesture** - Swipe, pinch, and gesture recognition components
+- **MobileForm** - Touch-optimized forms with native input types and validation
+- **InfiniteScroll** - Performance-optimized infinite scrolling with virtual lists
+- **MobileModal** - Full-screen and bottom sheet modals with touch interactions
+
+### Mobile-Specific Composables
+- **useNativeAPI** - Device API integration (camera, GPS, sensors, biometrics)
+- **useTouchGestures** - Touch interaction handling and gesture recognition
+- **useOfflineSync** - Data synchronization and offline queue management
+- **useMobilePerformance** - Battery optimization and memory management
+- **usePushNotifications** - Native push notification handling and registration
+
+### Native Services & APIs
+- **CapacitorPlugin** - Native API bridge for device capabilities
+- **CameraService** - Photo/video capture with gallery integration
+- **GeolocationService** - GPS tracking with background location updates
+- **BiometricService** - Fingerprint and face recognition authentication
+- **PushNotificationService** - Native push notification handling
+
+### Mobile Infrastructure
+- **MobileRouter** - Mobile navigation patterns with stack and tab routing
+- **OfflineStorage** - Local database with sync capabilities and conflict resolution
+- **MobileStateManager** - Mobile-optimized state management with persistence
+- **TouchOptimizer** - Touch interaction optimization and performance tuning
+- **MobileSecurity** - Secure storage, certificate pinning, and app security
+
+### Platform Integration
+- **iOSConfiguration** - iOS-specific build configuration and app store preparation
+- **AndroidConfiguration** - Android build setup with Gradle and Play Store optimization
+- **NativePlugins** - Custom native plugin development and integration
+- **AppStoreDeployment** - App store submission and release management
+```
+
+## Mobile-Specific Task Examples
+
+### Foundation & Native Setup
+- [ ] **1.0 Mobile Application Foundation & Native Integration**
+  - [ ] 1.1 Configure Capacitor with Vue 3 and TypeScript in Nx workspace
+  - [ ] 1.2 Set up native mobile navigation with tab bar and drawer patterns
+  - [ ] 1.3 Implement touch gesture recognition and mobile interaction patterns
+  - [ ] 1.4 Configure device API access (camera, GPS, storage, biometrics)
+  - [ ] 1.5 Set up mobile security with secure storage and authentication
+
+### Performance & User Experience
+- [ ] **2.0 Mobile Performance & Touch Optimization**
+  - [ ] 2.1 Optimize touch interactions with 60fps animations and smooth scrolling
+  - [ ] 2.2 Implement mobile-first responsive design with orientation handling
+  - [ ] 2.3 Create performance monitoring for battery usage and memory optimization
+  - [ ] 2.4 Build mobile-optimized image loading and caching strategies
+  - [ ] 2.5 Implement pull-to-refresh and infinite scroll patterns
+
+### Offline & Synchronization
+- [ ] **3.0 Offline-First Architecture & Data Sync**
+  - [ ] 3.1 Build robust offline data storage with SQLite and IndexedDB
+  - [ ] 3.2 Implement data synchronization with conflict resolution strategies
+  - [ ] 3.3 Create offline queue management for network requests
+  - [ ] 3.4 Build background sync capabilities with service workers
+  - [ ] 3.5 Implement network detection and adaptive loading strategies
+
+### Native Features & App Store
+- [ ] **4.0 Native Feature Integration & App Store Deployment**
+  - [ ] 4.1 Integrate push notifications with platform-specific handling
+  - [ ] 4.2 Implement camera and photo gallery integration with native controls
+  - [ ] 4.3 Build GPS tracking and location-based features
+  - [ ] 4.4 Set up biometric authentication and secure storage
+  - [ ] 4.5 Configure app store deployment for iOS and Android platforms
+
+## Timeline Adjustments for Mobile
+
+Mobile applications typically require additional time for:
+- Native API integration and testing (+25-35%)
+- Cross-platform mobile testing (iOS/Android) (+20-30%)
+- App store review and approval process (+15-25%)
+- Mobile-specific performance optimization (+20-30%)
+- Touch interaction design and testing (+15-20%)
+
+## Mobile Development Considerations
+
+### Performance Optimization
+- **Bundle Size:** Critical for mobile networks and storage
+- **Battery Usage:** Optimize background tasks and API calls
+- **Memory Management:** Efficient handling of large datasets and images
+- **Network Efficiency:** Minimize data usage and optimize for mobile networks
+
+### Platform Differences
+- **iOS Specific:** App Store guidelines, iOS design patterns, Swift bridge integration
+- **Android Specific:** Play Store requirements, Material Design, Android permissions
+- **Cross-Platform:** Shared business logic, platform-specific UI adaptations
+
+## Target Audience
+
+Assume the primary reader is a **junior to mid-level Vue.js developer** building cross-platform mobile applications with Capacitor or Ionic within an Nx workspace, requiring guidance on mobile-specific patterns, native API integration, and app store deployment strategies.

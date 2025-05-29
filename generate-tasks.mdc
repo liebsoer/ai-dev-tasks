@@ -22,7 +22,12 @@ To guide an AI assistant in creating a detailed, step-by-step task list in Markd
 
 1.  **Receive PRD Reference:** The user points the AI to a specific PRD file
 2.  **Analyze PRD:** The AI reads and analyzes the functional requirements, user stories, and other sections of the specified PRD.
-3.  **Phase 1: Generate Parent Tasks:** Based on the PRD analysis, create the file and generate the main, high-level tasks required to implement the feature. Use your judgement on how many high-level tasks to use. It's likely to be about 5. Present these tasks to the user in the specified format (without sub-tasks yet). Inform the user: "I have generated the high-level tasks based on the PRD. Ready to generate the sub-tasks? Respond with 'Go' to proceed."
+3.  **Phase 1: Generate Parent Tasks:** Based on the PRD analysis, create the file and generate the main, high-level tasks required to implement the feature. Use your judgement on how many high-level tasks to use based on complexity:
+    - **Simple Features (1-2 weeks):** 3-5 high-level tasks
+    - **Medium Features (1-2 months):** 6-10 high-level tasks  
+    - **Complex Applications (3-6 months):** 10-15 high-level tasks
+    - **Enterprise Applications (6+ months):** 15+ high-level tasks
+    Present these tasks to the user in the specified format (without sub-tasks yet). Inform the user: "I have generated the high-level tasks based on the PRD. Ready to generate the sub-tasks? Respond with 'Go' to proceed."
 4.  **Wait for Confirmation:** Pause and wait for the user to respond with "Go".
 5.  **Phase 2: Generate Sub-Tasks:** Once the user confirms, break down each parent task into smaller, actionable sub-tasks necessary to complete the parent task. Focus on architectural decisions, component design patterns, Vue.js best practices, and Nx monorepo organization rather than specific file creation. Ensure sub-tasks logically follow from the parent task and cover the implementation patterns implied by the PRD.
 6.  **Identify Relevant Architecture:** Based on the tasks and PRD, identify the Vue.js architectural components needed: Vue components, composables, stores, services, configuration modules, and Nx libraries for code sharing. List these under the `Relevant Components & Architecture` section.
@@ -112,7 +117,6 @@ The generated task list _must_ follow this structure:
   - [ ] 5.3 Implement code splitting and lazy loading patterns for optimal application performance
   - [ ] 5.4 Configure deployment pipelines with environment-specific builds and testing
   - [ ] 5.5 Establish monitoring and performance tracking for production applications
-```
 
 ## Interaction Model
 
@@ -121,3 +125,201 @@ The process explicitly requires a pause after generating parent tasks to get use
 ## Target Audience
 
 Assume the primary reader of the task list is a **junior to mid-level Vue.js developer** who will implement the feature within an Nx monorepo. Tasks should be described at an architectural level that allows flexibility in choosing specific Vue 3 patterns, file organization, and implementation approaches while maintaining best practices. Include guidance on Nx library creation, code sharing strategies, and monorepo-specific workflows.
+
+## Timeline Estimation Guidelines
+
+### Complexity Factors:
+- **UI Complexity:** Simple forms (1x) → Rich editors (3x) → Real-time collaboration (5x)
+- **Data Complexity:** CRUD operations (1x) → Search/filtering (2x) → ML/AI features (4x)
+- **Integration Complexity:** Local storage (1x) → REST APIs (2x) → Git/filesystem (3x)
+
+### Developer Experience Multipliers:
+- **Senior Developer:** 0.7x
+- **Mid-Level Developer:** 1.0x (baseline)
+- **Junior Developer:** 1.5x
+
+### Example Calculation:
+- 13 tasks × 6 sub-tasks = 78 total tasks
+- Medium complexity: 78 × 3 days = 234 days
+- Junior-Mid developer: 234 × 1.2 = 281 days (≈ 5.5 months)
+
+## Quality Checkpoints
+
+After every 3-4 major tasks, include validation milestones:
+
+- [ ] **Architecture Review:** Validate library boundaries and dependencies
+- [ ] **Performance Baseline:** Ensure application loads in <2s with test data
+- [ ] **Accessibility Audit:** Run axe-core and validate WCAG compliance
+- [ ] **Testing Coverage:** Maintain >80% test coverage across all libraries
+- [ ] **User Testing:** Validate core user workflows with stakeholders
+
+## Technology Stack Checklist
+
+Before task generation, validate:
+- [ ] **Build Tool:** Vite (recommended) vs Webpack vs other
+- [ ] **State Management:** Pinia (recommended) vs Vuex vs composables
+- [ ] **Testing Framework:** Vitest + Vue Test Utils (recommended)
+- [ ] **UI Framework:** Headless UI vs Vuetify vs custom components
+- [ ] **Deployment Target:** Static hosting vs SSR vs desktop app vs mobile
+
+## Troubleshooting Patterns
+
+### When Tasks Become Too Complex:
+1. **Break Down Further:** Split sub-tasks into smaller chunks
+2. **Prototype First:** Create spike solution before full implementation
+3. **Simplify Scope:** Move advanced features to future phases
+4. **Seek Guidance:** Escalate complex architectural decisions
+
+### When Dependencies Block Progress:
+1. **Mock Dependencies:** Create temporary implementations
+2. **Parallel Development:** Work on independent features
+3. **Dependency Injection:** Design for loose coupling
+
+## Success Metrics Framework
+
+Define measurable outcomes for each major task:
+- **Performance:** Load time, bundle size, runtime performance
+- **Accessibility:** WCAG compliance score, keyboard navigation coverage
+- **User Experience:** Task completion time, error rates, user satisfaction
+- **Code Quality:** Test coverage, TypeScript strict mode compliance, linting scores
+- **Maintainability:** Cyclomatic complexity, dependency graph health
+
+## Documentation Standards
+
+Each task should produce comprehensive documentation:
+- [ ] **Component Documentation:** Props, events, slots, and usage examples with TypeScript
+- [ ] **Composable Documentation:** Parameters, return values, side effects, and Vue integration patterns
+- [ ] **Store Documentation:** State shape, actions, getters, and Pinia integration
+- [ ] **Service Documentation:** API methods, error handling, types, and Vue reactivity integration
+- [ ] **Architecture Decision Records:** Major technical decisions, rationale, and Nx library boundaries
+- [ ] **Testing Documentation:** Test strategies, mocking patterns, and Vue Test Utils usage
+
+## PRD Mapping Guidelines
+
+### Functional Requirements → Tasks:
+- Each functional requirement should map to 1-3 specific sub-tasks with Vue component focus
+- Critical requirements should have dedicated testing sub-tasks with Vitest integration
+- Complex requirements should be broken into smaller Vue composable components
+
+### User Stories → Acceptance Criteria:
+- Convert user stories into testable acceptance criteria with Vue component behavior
+- Each user story should have corresponding E2E test tasks using Cypress or Playwright
+- Include edge cases and error scenarios in Vue error boundary and validation patterns
+
+## Multi-Template Application Scenarios
+
+### When Your Application Uses Multiple Platforms
+
+For applications that span multiple deployment targets (e.g., web app + mobile app + backend API), use this approach:
+
+#### **Option 1: Sequential Template Application**
+1. **Start with Primary Platform:** Use the template for your main platform (e.g., `@generate-tasks-web.mdc` for primary web app)
+2. **Generate Secondary Platforms:** Create separate task lists for each additional platform:
+   - `@generate-tasks-mobile.mdc` for mobile companion app
+   - `@generate-tasks-cloud.mdc` for backend API services
+   - `@generate-tasks-infrastructure.mdc` for DevOps and deployment
+
+#### **Option 2: Integrated Multi-Platform Approach**
+For tightly integrated applications, specify multiple templates in sequence:
+
+```
+Now take @MyFeature-PRD.md and create integrated tasks using:
+1. First generate web tasks with @generate-tasks-web.mdc
+2. Then add mobile tasks with @generate-tasks-mobile.mdc  
+3. Finally add backend tasks with @generate-tasks-cloud.mdc
+
+Ensure cross-platform integration points are identified and dependencies are properly managed.
+```
+
+#### **Option 3: Custom Hybrid Template Selection**
+For unique combinations, request specific focus areas:
+
+```
+Take @MyFeature-PRD.md and create tasks focusing on:
+- Web application with PWA capabilities (use web template patterns)
+- Desktop companion app (use desktop template patterns)
+- Shared component libraries (use core Nx patterns)
+- MCP server integration (use MCP template patterns)
+
+Generate tasks that emphasize cross-platform code sharing and Nx library optimization.
+```
+
+### Multi-Template Integration Guidelines
+
+#### **Shared Libraries Strategy:**
+- **UI Library:** Shared across web, mobile, and desktop
+- **Business Logic Library:** Common logic for all platforms
+- **API Library:** Shared API client for web, mobile, and desktop
+- **Utilities Library:** Common utilities and helpers
+- **Types Library:** Shared TypeScript interfaces and types
+
+#### **Platform-Specific Libraries:**
+- **Web-Specific:** PWA features, SEO optimization, web APIs
+- **Mobile-Specific:** Native device APIs, mobile navigation
+- **Desktop-Specific:** File system access, OS integration
+- **Backend-Specific:** Database models, server middleware
+- **MCP-Specific:** Protocol handlers, tool implementations
+
+#### **Integration Task Patterns:**
+When using multiple templates, include these cross-platform tasks:
+
+- [ ] **Cross-Platform Architecture Planning**
+  - [ ] Define shared library boundaries and dependencies
+  - [ ] Plan data synchronization between platforms
+  - [ ] Design authentication flow across all platforms
+  - [ ] Create shared design system and component library
+
+- [ ] **Platform Integration Points**
+  - [ ] Build shared API client with platform-specific optimizations
+  - [ ] Implement cross-platform data persistence strategies
+  - [ ] Create unified error handling and logging
+  - [ ] Design platform-specific feature flags and configuration
+
+- [ ] **Testing Strategy Coordination**
+  - [ ] Plan cross-platform integration testing
+  - [ ] Create shared testing utilities and mocks
+  - [ ] Design end-to-end testing across multiple platforms
+  - [ ] Implement shared performance and accessibility testing
+
+#### **Timeline Adjustments for Multi-Platform:**
+- **Dual Platform (e.g., Web + Mobile):** +30-50% additional time
+- **Triple Platform (e.g., Web + Mobile + Desktop):** +60-80% additional time
+- **Full Stack (Frontend + Backend + Infrastructure):** +80-120% additional time
+- **With MCP Integration:** +20-30% additional time for protocol implementation
+
+### Example Multi-Platform Commands
+
+#### **E-commerce Platform (Web + Mobile + Backend):**
+```
+Create tasks for a comprehensive e-commerce platform using:
+1. @generate-tasks-web.mdc for customer-facing website
+2. @generate-tasks-mobile.mdc for customer mobile app  
+3. @generate-tasks-cloud.mdc for backend services and APIs
+4. @generate-tasks-infrastructure.mdc for deployment and monitoring
+
+Focus on shared cart, user, and product management across platforms.
+```
+
+#### **Content Management System (Web + Desktop + MCP):**
+```
+Generate tasks for a content management system using:
+1. @generate-tasks-web.mdc for web editor interface
+2. @generate-tasks-desktop.mdc for desktop publishing app
+3. @generate-tasks-mcp.mdc for content processing server
+4. @generate-tasks-infrastructure.mdc for content delivery
+
+Emphasize shared content models and cross-platform synchronization.
+```
+
+#### **Developer Tools Platform (All Platforms):**
+```
+Create comprehensive tasks for a developer tools platform using:
+1. @generate-tasks-web.mdc for web dashboard
+2. @generate-tasks-desktop.mdc for desktop IDE integration
+3. @generate-tasks-mobile.mdc for mobile monitoring app
+4. @generate-tasks-cloud.mdc for backend processing services
+5. @generate-tasks-mcp.mdc for development tool integrations
+6. @generate-tasks-infrastructure.mdc for scalable deployment
+
+Focus on developer experience consistency across all platforms.
+```

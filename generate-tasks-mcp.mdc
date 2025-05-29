@@ -1,0 +1,190 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Rule: Generating MCP Server Task List from a PRD
+
+## Goal
+
+To guide an AI assistant in creating a detailed, step-by-step task list for implementing a **Model Context Protocol (MCP) server** using TypeScript/Node.js, emphasizing protocol compliance, tool integration, resource management, and developer experience within an Nx monorepo structure.
+
+## Target Platform
+
+**MCP Servers** - Focus on:
+- Model Context Protocol specification compliance
+- Tool and resource implementation patterns
+- Client integration and SDK development
+- Protocol message handling and validation
+- Server lifecycle management and error handling
+- Development tools and debugging capabilities
+- Documentation and testing strategies
+
+## MCP-Specific Considerations
+
+### Protocol Implementation
+- **Message Handling:** Request/response patterns, notifications, bidirectional communication
+- **Tool Definition:** Function schemas, parameter validation, execution contexts
+- **Resource Management:** URI schemes, content types, access patterns
+- **Capability Discovery:** Server capabilities, client negotiation, version compatibility
+
+### Architecture Patterns
+- **Handler Organization:** Tool handlers, resource providers, middleware patterns
+- **State Management:** Server state, session management, context preservation
+- **Error Handling:** Protocol errors, tool failures, resource unavailability
+- **Security:** Input validation, access control, sandboxing considerations
+
+### Developer Experience
+- **Type Safety:** TypeScript interfaces, schema validation, code generation
+- **Testing Strategies:** Unit tests, integration tests, protocol compliance testing
+- **Development Tools:** CLI tools, debugging utilities, protocol inspectors
+- **Documentation:** API docs, usage examples, integration guides
+
+## Process
+
+1.  **Receive PRD Reference:** The user points the AI to a specific PRD file for MCP server development
+2.  **Analyze PRD for MCP Patterns:** Focus on tool requirements, resource needs, client integration, and protocol compliance
+3.  **Phase 1: Generate MCP-Focused Parent Tasks:** Create 8-12 high-level tasks optimized for MCP server development patterns
+4.  **Wait for Confirmation:** Pause and wait for user to respond with "Go"
+5.  **Phase 2: Generate MCP Sub-Tasks:** Break down each parent task with MCP-specific patterns, protocol compliance, and integration considerations
+6.  **Identify MCP Architecture:** Focus on protocol handlers, tool implementations, and development infrastructure
+7.  **Generate Final Output:** Combine tasks with MCP deployment and testing considerations
+
+## Output Format
+
+The generated task list _must_ follow this structure with MCP-specific components:
+
+```markdown
+## Relevant Components & Architecture
+
+### MCP Protocol Implementation
+- **ProtocolServer** - Core MCP server with message handling and protocol compliance
+- **ToolHandler** - Tool registration, validation, and execution framework
+- **ResourceProvider** - Resource URI handling, content delivery, and access control
+- **MessageRouter** - Request routing, response handling, and error propagation
+- **CapabilityManager** - Server capability advertisement and client negotiation
+
+### Tool & Resource Managers
+- **ToolRegistry** - Dynamic tool registration with schema validation and lifecycle management
+- **ResourceManager** - URI-based resource access with caching and content type handling
+- **ExecutionContext** - Tool execution environment with isolation and error handling
+- **ValidationEngine** - Input/output validation with JSON schema and type checking
+- **SecurityManager** - Access control, input sanitization, and execution sandboxing
+
+### Client Integration & SDK
+- **ClientSDK** - TypeScript SDK for MCP client implementation
+- **ProtocolClient** - Low-level protocol client with connection management
+- **ToolInvoker** - High-level tool invocation with error handling and retries
+- **ResourceClient** - Resource access client with caching and content negotiation
+- **EventEmitter** - Event-driven architecture for real-time updates
+
+### Development Infrastructure
+- **MCPCLITools** - Command-line utilities for server development and testing
+- **ProtocolInspector** - Debugging tool for protocol message inspection
+- **SchemaGenerator** - Automatic schema generation from TypeScript interfaces
+- **TestFramework** - MCP-specific testing utilities and mock implementations
+- **DocumentationGenerator** - Automatic API documentation from tool definitions
+
+### Server Runtime & Deployment
+- **ServerRuntime** - Server lifecycle management with graceful shutdown
+- **ConfigurationManager** - Environment-based configuration with validation
+- **LoggingSystem** - Structured logging with protocol message tracing
+- **HealthMonitor** - Server health checks and performance monitoring
+- **DeploymentPackaging** - Distribution packaging for various deployment targets
+
+### Nx MCP Libraries
+- **MCPCore** - Core protocol implementation and message handling
+- **MCPTools** - Reusable tool implementations and patterns
+- **MCPResources** - Common resource providers and URI schemes
+- **MCPTesting** - Testing utilities and mock implementations
+- **MCPTypes** - Shared TypeScript types and interfaces
+```
+
+## MCP-Specific Task Examples
+
+### Foundation & Protocol Implementation
+- [ ] **1.0 MCP Server Foundation & Protocol Compliance**
+  - [ ] 1.1 Implement core MCP protocol server with TypeScript and message validation
+  - [ ] 1.2 Create tool registration system with JSON schema validation
+  - [ ] 1.3 Build resource provider framework with URI handling and content types
+  - [ ] 1.4 Implement capability discovery and client negotiation
+  - [ ] 1.5 Set up protocol message routing and error handling
+
+### Tool Development Framework
+- [ ] **2.0 Tool Implementation & Management System**
+  - [ ] 2.1 Design tool handler architecture with execution isolation
+  - [ ] 2.2 Create tool parameter validation with JSON schema integration
+  - [ ] 2.3 Implement tool result formatting and error propagation
+  - [ ] 2.4 Build tool discovery and documentation generation
+  - [ ] 2.5 Create tool testing framework with mock execution environments
+
+### Resource Management
+- [ ] **3.0 Resource Provider & Content Management**
+  - [ ] 3.1 Implement URI-based resource access with multiple content types
+  - [ ] 3.2 Create resource caching and invalidation strategies
+  - [ ] 3.3 Build access control and security validation for resources
+  - [ ] 3.4 Design resource metadata and content negotiation
+  - [ ] 3.5 Implement streaming support for large resources
+
+### Client Integration & SDK
+- [ ] **4.0 Client SDK & Integration Libraries**
+  - [ ] 4.1 Build TypeScript SDK for MCP client implementation
+  - [ ] 4.2 Create high-level API wrappers for common operations
+  - [ ] 4.3 Implement connection management with reconnection strategies
+  - [ ] 4.4 Design event-driven architecture for real-time updates
+  - [ ] 4.5 Create integration examples and usage documentation
+
+### Development Tools & Testing
+- [ ] **5.0 Development Infrastructure & Testing Framework**
+  - [ ] 5.1 Build MCP CLI tools for server development and debugging
+  - [ ] 5.2 Create protocol inspector for message debugging
+  - [ ] 5.3 Implement comprehensive testing framework with protocol compliance tests
+  - [ ] 5.4 Design mock implementations for development and testing
+  - [ ] 5.5 Create performance testing and benchmarking tools
+
+## Timeline Adjustments for MCP Servers
+
+MCP server development typically requires additional time for:
+- Protocol compliance testing and validation (+20-30%)
+- Tool and resource implementation (+25-35%)
+- Client SDK development and testing (+15-25%)
+- Documentation and example creation (+20-30%)
+- Integration testing with various clients (+15-20%)
+
+## MCP Development Considerations
+
+### Protocol Compliance
+- **Message Validation:** Strict adherence to MCP message schemas
+- **Error Handling:** Proper error codes and message formatting
+- **Capability Advertisement:** Accurate server capability reporting
+- **Version Compatibility:** Support for multiple protocol versions
+
+### Performance Optimization
+- **Message Processing:** Efficient request/response handling
+- **Resource Caching:** Intelligent caching strategies for resources
+- **Tool Execution:** Optimized tool execution with proper isolation
+- **Memory Management:** Efficient memory usage for long-running servers
+
+### Security Considerations
+- **Input Validation:** Comprehensive validation of all inputs
+- **Access Control:** Proper authorization for tools and resources
+- **Sandboxing:** Isolation of tool execution environments
+- **Audit Logging:** Complete audit trail of all operations
+
+## MCP Architecture Patterns
+
+### Tool Organization
+- **Domain-Specific Tools:** Group tools by functional domain
+- **Composable Tools:** Design tools that can be combined
+- **Async Tool Execution:** Support for long-running operations
+- **Tool Versioning:** Version management for tool evolution
+
+### Resource Patterns
+- **Virtual Resources:** Dynamically generated content
+- **Cached Resources:** Performance optimization strategies
+- **Streaming Resources:** Support for large data transfers
+- **Resource Dependencies:** Managing resource relationships
+
+## Target Audience
+
+Assume the primary reader is a **mid-level TypeScript/Node.js developer** building MCP servers within an Nx workspace, requiring guidance on protocol implementation, tool development patterns, and client integration strategies.

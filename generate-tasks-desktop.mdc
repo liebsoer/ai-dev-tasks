@@ -1,0 +1,130 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Rule: Generating Desktop Application Task List from a PRD
+
+## Goal
+
+To guide an AI assistant in creating a detailed, step-by-step task list for implementing a **desktop application** using Vue.js with Tauri or Electron, emphasizing native OS integration, performance optimization, and cross-platform compatibility within an Nx monorepo structure.
+
+## Target Platform
+
+**Desktop Applications** - Focus on:
+- Native OS integration (file system, system tray, notifications)
+- Cross-platform compatibility (Windows, macOS, Linux)
+- Performance optimization for desktop environments
+- Native look and feel with platform-specific UI patterns
+- Security considerations for desktop deployment
+- Auto-update mechanisms and distribution strategies
+
+## Desktop-Specific Considerations
+
+### Native Integration
+- **File System Access:** Deep file/folder operations, drag-and-drop, file associations
+- **System Integration:** Menu bar integration, system tray, global shortcuts
+- **OS APIs:** Native dialogs, clipboard, notifications, system info
+- **Hardware Access:** Camera, microphone, GPU acceleration
+
+### Performance & Security
+- **Bundle Optimization:** Minimize app size, lazy loading for desktop
+- **Memory Management:** Efficient resource usage for long-running applications
+- **Security:** Code signing, auto-update security, sandboxing considerations
+- **Offline Capabilities:** Local data storage, sync when online
+
+### User Experience
+- **Native Feel:** Platform-specific UI patterns and behaviors
+- **Window Management:** Multi-window support, state persistence
+- **Keyboard Shortcuts:** Comprehensive hotkey system
+- **Accessibility:** Screen reader support, high contrast themes
+
+## Process
+
+1.  **Receive PRD Reference:** The user points the AI to a specific PRD file for desktop application
+2.  **Analyze PRD for Desktop Patterns:** Focus on desktop-specific requirements like file handling, native integrations, and performance needs
+3.  **Phase 1: Generate Desktop-Focused Parent Tasks:** Create 8-12 high-level tasks optimized for desktop development patterns
+4.  **Wait for Confirmation:** Pause and wait for user to respond with "Go"
+5.  **Phase 2: Generate Desktop Sub-Tasks:** Break down each parent task with desktop-specific patterns, Tauri/Electron integration, and native OS features
+6.  **Identify Desktop Architecture:** Focus on native integration services, file system handlers, and desktop-specific stores
+7.  **Generate Final Output:** Combine tasks with desktop deployment and distribution considerations
+
+## Output Format
+
+The generated task list _must_ follow this structure with desktop-specific components:
+
+```markdown
+## Relevant Components & Architecture
+
+### Vue Desktop Components
+- **DesktopWindow** - Main application window with native controls and menu integration
+- **FileExplorer** - Native file browser with drag-and-drop and preview capabilities
+- **SystemTray** - System tray integration with context menus and status indicators
+- **NativeDialog** - Native OS dialogs for file selection, alerts, and confirmations
+- **DesktopNavigation** - Desktop-optimized navigation with sidebar and toolbar patterns
+
+### Desktop-Specific Composables
+- **useFileSystem** - File and folder operations with native OS integration
+- **useNativeIntegration** - System tray, notifications, and global shortcuts
+- **useWindowManagement** - Window state, positioning, and multi-window coordination
+- **useDesktopStore** - Desktop-specific data persistence and synchronization
+- **useAutoUpdate** - Application update checking and installation management
+
+### Native Services & APIs
+- **TauriAPI** - Tauri backend integration for file system and OS operations
+- **FileSystemService** - Cross-platform file operations with proper permissions
+- **NotificationService** - Native OS notifications with action buttons
+- **ClipboardService** - Advanced clipboard operations with format detection
+- **SystemInfoService** - Hardware and OS information gathering
+
+### Desktop Infrastructure
+- **AppBundle** - Application packaging and code signing configuration
+- **AutoUpdater** - Update distribution and installation mechanisms
+- **SecurityPolicy** - Content Security Policy and sandboxing for desktop
+- **DesktopRouter** - Window-based routing for multi-window applications
+- **PerformanceOptimizer** - Desktop-specific performance and memory management
+
+### Tauri/Electron Integration
+- **RustBackend** - Tauri backend commands and event handling (if using Tauri)
+- **ElectronMain** - Main process management and native API access (if using Electron)
+- **IPC Communication** - Inter-process communication between frontend and native
+- **NativePlugins** - Platform-specific functionality and system integration
+```
+
+## Desktop-Specific Task Examples
+
+### Foundation & Native Integration
+- [ ] **1.0 Desktop Application Foundation & Native Setup**
+  - [ ] 1.1 Configure Tauri/Electron with Vue 3 and TypeScript in Nx workspace
+  - [ ] 1.2 Set up native OS integration with file system access and permissions
+  - [ ] 1.3 Implement system tray integration with context menus and status updates
+  - [ ] 1.4 Configure cross-platform window management with state persistence
+  - [ ] 1.5 Set up code signing and security policies for desktop deployment
+
+### File System & Data Management
+- [ ] **2.0 Advanced File System Integration**
+  - [ ] 2.1 Build native file browser with drag-and-drop and preview capabilities
+  - [ ] 2.2 Implement file association handling and default application registration
+  - [ ] 2.3 Create advanced file operations with progress tracking and error recovery
+  - [ ] 2.4 Design local database with encryption and backup strategies
+  - [ ] 2.5 Implement file watching and synchronization with external changes
+
+### Performance & Distribution
+- [ ] **3.0 Desktop Performance & Auto-Update System**
+  - [ ] 3.1 Optimize bundle size and implement lazy loading for desktop environments
+  - [ ] 3.2 Create memory-efficient data handling for large datasets
+  - [ ] 3.3 Implement auto-update mechanism with delta updates and rollback
+  - [ ] 3.4 Set up crash reporting and analytics for desktop applications
+  - [ ] 3.5 Configure multi-platform distribution and installation packages
+
+## Timeline Adjustments for Desktop
+
+Desktop applications typically require 20-30% additional time for:
+- Native integration testing across platforms
+- Code signing and distribution setup
+- Performance optimization for desktop environments
+- Security auditing and compliance requirements
+
+## Target Audience
+
+Assume the primary reader is a **junior to mid-level Vue.js developer** learning desktop application development with Tauri or Electron within an Nx workspace, requiring guidance on native OS integration patterns and cross-platform considerations.

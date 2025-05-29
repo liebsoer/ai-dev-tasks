@@ -1,0 +1,176 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Rule: Generating Infrastructure & DevOps Task List from a PRD
+
+## Goal
+
+To guide an AI assistant in creating a detailed, step-by-step task list for implementing **infrastructure automation, DevOps practices, and deployment pipelines** for Vue.js applications, emphasizing containerization, CI/CD, monitoring, and Infrastructure as Code within an Nx monorepo structure.
+
+## Target Platform
+
+**Infrastructure & DevOps** - Focus on:
+- Container orchestration (Docker, Kubernetes, Docker Compose)
+- CI/CD pipeline automation (GitHub Actions, GitLab CI, Jenkins)
+- Infrastructure as Code (Terraform, Ansible, CloudFormation)
+- Monitoring and observability (Prometheus, Grafana, ELK Stack)
+- Security automation and compliance (SAST, DAST, dependency scanning)
+- Multi-environment management (dev, staging, production)
+- Disaster recovery and business continuity planning
+
+## Infrastructure-Specific Considerations
+
+### Containerization & Orchestration
+- **Docker:** Multi-stage builds, optimization, security scanning
+- **Kubernetes:** Pod design, services, ingress, ConfigMaps, secrets
+- **Container Registry:** Image management, vulnerability scanning, lifecycle policies
+- **Service Mesh:** Istio, Linkerd for microservices communication
+
+### CI/CD & Automation
+- **Pipeline Design:** Build, test, security scan, deploy, rollback strategies
+- **Testing Automation:** Unit, integration, E2E, performance, security testing
+- **Deployment Strategies:** Blue-green, canary, rolling updates, feature flags
+- **Environment Management:** Branch-based deployments, environment parity
+
+### Infrastructure as Code
+- **Provisioning:** Cloud resources, networking, security groups, databases
+- **Configuration Management:** Application configuration, secrets, environment variables
+- **Version Control:** Infrastructure versioning, change management, rollback procedures
+- **Compliance:** Policy as code, security compliance, audit trails
+
+## Process
+
+1.  **Receive PRD Reference:** The user points the AI to a specific PRD file requiring infrastructure setup
+2.  **Analyze PRD for Infrastructure Requirements:** Focus on scalability, deployment needs, security requirements, and operational considerations
+3.  **Phase 1: Generate Infrastructure-Focused Parent Tasks:** Create 10-14 high-level tasks optimized for DevOps and infrastructure patterns
+4.  **Wait for Confirmation:** Pause and wait for user to respond with "Go"
+5.  **Phase 2: Generate Infrastructure Sub-Tasks:** Break down each parent task with DevOps practices, automation patterns, and monitoring strategies
+6.  **Identify Infrastructure Architecture:** Focus on deployment pipelines, monitoring stacks, and automation tools
+7.  **Generate Final Output:** Combine tasks with operational excellence and security considerations
+
+## Output Format
+
+The generated task list _must_ follow this structure with infrastructure-specific components:
+
+```markdown
+## Relevant Components & Architecture
+
+### Container & Orchestration
+- **DockerConfiguration** - Multi-stage builds with optimization and security scanning
+- **KubernetesManifests** - Pod definitions, services, ingress, and resource management
+- **HelmCharts** - Templated Kubernetes deployments with value management
+- **ServiceMesh** - Inter-service communication with security and observability
+- **ContainerRegistry** - Image storage with vulnerability scanning and lifecycle management
+
+### CI/CD Pipeline Components
+- **BuildPipeline** - Automated building with caching and optimization strategies
+- **TestAutomation** - Comprehensive testing suite with parallel execution
+- **SecurityScanning** - SAST, DAST, dependency vulnerability, and compliance checks
+- **DeploymentPipeline** - Multi-environment deployment with approval gates
+- **RollbackMechanism** - Automated rollback with health checks and monitoring
+
+### Infrastructure as Code
+- **TerraformModules** - Reusable infrastructure components with proper state management
+- **AnsiblePlaybooks** - Configuration management and application deployment automation
+- **CloudFormationTemplates** - AWS-specific infrastructure provisioning and management
+- **PolicyAsCode** - Security policies, compliance rules, and governance automation
+- **SecretManagement** - Secure credential storage with rotation and access control
+
+### Monitoring & Observability
+- **MetricsCollection** - Prometheus setup with custom metrics and alerting rules
+- **LogAggregation** - ELK stack or similar for centralized logging and analysis
+- **DistributedTracing** - Jaeger or Zipkin for request tracing across services
+- **DashboardCreation** - Grafana dashboards with business and technical metrics
+- **AlertingSystem** - Intelligent alerting with escalation and incident management
+
+### Security & Compliance
+- **SecurityAutomation** - Automated security scanning and vulnerability management
+- **ComplianceMonitoring** - Continuous compliance checking and reporting
+- **AccessControl** - RBAC implementation with audit trails and access reviews
+- **NetworkSecurity** - Firewall rules, VPN setup, and network segmentation
+- **DataProtection** - Encryption, backup, and data loss prevention strategies
+
+### Nx DevOps Integration
+- **NxAffected** - Efficient CI/CD with affected project detection and parallel execution
+- **NxCaching** - Build caching strategies for faster pipeline execution
+- **NxDeployment** - Automated deployment of multiple applications and libraries
+- **NxMonitoring** - Workspace-specific monitoring and dependency tracking
+- **NxSecurity** - Monorepo security scanning and dependency management
+```
+
+## Infrastructure-Specific Task Examples
+
+### Foundation & Containerization
+- [ ] **1.0 Container Infrastructure & Orchestration Setup**
+  - [ ] 1.1 Create optimized Docker configurations with multi-stage builds and security scanning
+  - [ ] 1.2 Design Kubernetes cluster architecture with proper resource allocation and security
+  - [ ] 1.3 Set up container registry with automated scanning and lifecycle policies
+  - [ ] 1.4 Implement service mesh for microservices communication and observability
+  - [ ] 1.5 Configure container orchestration with auto-scaling and health checks
+
+### CI/CD Pipeline Automation
+- [ ] **2.0 Comprehensive CI/CD Pipeline Implementation**
+  - [ ] 2.1 Build automated testing pipeline with parallel execution and caching
+  - [ ] 2.2 Implement security scanning with SAST, DAST, and dependency checks
+  - [ ] 2.3 Create multi-environment deployment pipeline with approval workflows
+  - [ ] 2.4 Set up blue-green deployment with automated rollback capabilities
+  - [ ] 2.5 Integrate Nx affected commands for efficient monorepo CI/CD
+
+### Infrastructure as Code
+- [ ] **3.0 Infrastructure Automation & Configuration Management**
+  - [ ] 3.1 Design Terraform modules for cloud resource provisioning and management
+  - [ ] 3.2 Implement Ansible playbooks for configuration management and deployment
+  - [ ] 3.3 Create policy as code for security compliance and governance
+  - [ ] 3.4 Set up secrets management with automated rotation and access control
+  - [ ] 3.5 Build infrastructure testing and validation automation
+
+### Monitoring & Observability
+- [ ] **4.0 Comprehensive Monitoring & Observability Stack**
+  - [ ] 4.1 Deploy Prometheus and Grafana for metrics collection and visualization
+  - [ ] 4.2 Implement centralized logging with ELK stack or similar solution
+  - [ ] 4.3 Set up distributed tracing for microservices monitoring
+  - [ ] 4.4 Create custom dashboards for business and technical metrics
+  - [ ] 4.5 Build intelligent alerting with escalation and incident response
+
+### Security & Compliance Automation
+- [ ] **5.0 Security Automation & Compliance Framework**
+  - [ ] 5.1 Implement automated security scanning throughout the development lifecycle
+  - [ ] 5.2 Set up compliance monitoring with continuous assessment and reporting
+  - [ ] 5.3 Create access control automation with RBAC and audit trails
+  - [ ] 5.4 Build network security automation with firewall and VPN management
+  - [ ] 5.5 Implement data protection strategies with encryption and backup automation
+
+## Timeline Adjustments for Infrastructure
+
+Infrastructure and DevOps projects typically require additional time for:
+- Security implementation and compliance validation (+30-50%)
+- Pipeline testing and optimization (+25-35%)
+- Multi-environment setup and configuration (+20-30%)
+- Monitoring and alerting configuration (+20-25%)
+- Documentation and runbook creation (+15-20%)
+
+## DevOps Best Practices
+
+### Pipeline Optimization
+- **Nx Integration:** Leverage affected commands for efficient builds and tests
+- **Caching Strategies:** Implement aggressive caching for faster pipeline execution
+- **Parallel Execution:** Run independent tasks in parallel to reduce total time
+- **Artifact Management:** Proper artifact storage and lifecycle management
+
+### Security Integration
+- **Shift Left:** Integrate security scanning early in the development process
+- **Automated Compliance:** Continuous compliance checking and reporting
+- **Secret Management:** Secure handling of credentials and sensitive data
+- **Vulnerability Management:** Automated scanning and remediation workflows
+
+### Operational Excellence
+- **Monitoring Strategy:** Comprehensive observability across all layers
+- **Incident Response:** Automated incident detection and response procedures
+- **Disaster Recovery:** Regular testing of backup and recovery procedures
+- **Documentation:** Comprehensive runbooks and operational procedures
+
+## Target Audience
+
+Assume the primary reader is a **DevOps engineer or infrastructure specialist** implementing modern CI/CD practices and cloud-native infrastructure for Vue.js applications within an Nx workspace, requiring guidance on automation patterns, security implementation, and operational excellence.

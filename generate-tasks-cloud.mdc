@@ -1,0 +1,173 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Rule: Generating Cloud Infrastructure Task List from a PRD
+
+## Goal
+
+To guide an AI assistant in creating a detailed, step-by-step task list for implementing **cloud infrastructure and backend services** supporting a Vue.js application, emphasizing scalability, security, and modern cloud-native patterns within an Nx monorepo structure.
+
+## Target Platform
+
+**Cloud Infrastructure** - Focus on:
+- Scalable backend API development (Node.js, Serverless, Microservices)
+- Cloud platform integration (AWS, Azure, GCP)
+- Database design and optimization (SQL, NoSQL, caching)
+- Authentication and authorization systems
+- Monitoring, logging, and observability
+- CI/CD pipelines and infrastructure as code
+- Security, compliance, and data protection
+
+## Cloud-Specific Considerations
+
+### Backend Architecture
+- **API Design:** RESTful APIs, GraphQL, real-time WebSocket connections
+- **Microservices:** Service decomposition, inter-service communication, API gateways
+- **Serverless:** Function-as-a-Service, event-driven architecture, cold start optimization
+- **Data Layer:** Database design, caching strategies, data migration and backup
+
+### Cloud Platform Integration
+- **Compute:** Container orchestration, auto-scaling, load balancing
+- **Storage:** Object storage, CDN, database services, backup strategies
+- **Networking:** VPC setup, security groups, DNS management, SSL/TLS
+- **Security:** IAM, secrets management, encryption, compliance frameworks
+
+### DevOps & Monitoring
+- **CI/CD:** Automated testing, deployment pipelines, infrastructure as code
+- **Monitoring:** Application performance monitoring, logging, alerting
+- **Observability:** Distributed tracing, metrics collection, dashboard creation
+- **Disaster Recovery:** Backup strategies, failover mechanisms, business continuity
+
+## Process
+
+1.  **Receive PRD Reference:** The user points the AI to a specific PRD file requiring cloud infrastructure
+2.  **Analyze PRD for Cloud Requirements:** Focus on scalability, data requirements, integration needs, and security considerations
+3.  **Phase 1: Generate Cloud-Focused Parent Tasks:** Create 12-16 high-level tasks optimized for cloud architecture patterns
+4.  **Wait for Confirmation:** Pause and wait for user to respond with "Go"
+5.  **Phase 2: Generate Cloud Sub-Tasks:** Break down each parent task with cloud-specific patterns, platform services, and DevOps practices
+6.  **Identify Cloud Architecture:** Focus on backend services, data stores, and infrastructure components
+7.  **Generate Final Output:** Combine tasks with deployment, monitoring, and security considerations
+
+## Output Format
+
+The generated task list _must_ follow this structure with cloud-specific components:
+
+```markdown
+## Relevant Components & Architecture
+
+### Backend Services & APIs
+- **AuthenticationAPI** - JWT-based authentication with refresh tokens and MFA
+- **UserManagementAPI** - User CRUD operations with role-based access control
+- **DataProcessingAPI** - Business logic APIs with validation and error handling
+- **FileUploadAPI** - Secure file upload with virus scanning and storage optimization
+- **NotificationAPI** - Multi-channel notifications (email, SMS, push, webhooks)
+
+### Cloud Infrastructure Components
+- **APIGateway** - Request routing, rate limiting, authentication, and API versioning
+- **LoadBalancer** - Traffic distribution with health checks and auto-scaling
+- **CDNConfiguration** - Global content delivery with edge caching and optimization
+- **DatabaseCluster** - Multi-region database setup with read replicas and failover
+- **CacheLayer** - Redis/Memcached implementation with intelligent cache invalidation
+
+### Data & Storage Services
+- **DatabaseService** - Relational and NoSQL database design with optimization
+- **FileStorageService** - Object storage with lifecycle management and CDN integration
+- **DataWarehouse** - Analytics database with ETL pipelines and reporting
+- **BackupService** - Automated backup with point-in-time recovery and testing
+- **SearchEngine** - Elasticsearch/OpenSearch implementation with indexing strategies
+
+### Security & Compliance
+- **IdentityProvider** - OAuth2/OIDC integration with social login and SSO
+- **SecretsManager** - Secure credential storage and rotation policies
+- **EncryptionService** - Data encryption at rest and in transit with key management
+- **ComplianceMonitor** - GDPR, HIPAA, SOC2 compliance monitoring and reporting
+- **SecurityScanner** - Vulnerability scanning and dependency security monitoring
+
+### DevOps & Monitoring
+- **CIPipeline** - Automated testing, building, and deployment workflows
+- **InfrastructureAsCode** - Terraform/CloudFormation templates with version control
+- **MonitoringStack** - Prometheus, Grafana, ELK stack for comprehensive observability
+- **AlertingSystem** - Intelligent alerting with escalation policies and integration
+- **LoggingService** - Centralized logging with log aggregation and analysis
+
+### Nx Backend Libraries
+- **APILibrary** - Shared API utilities, middleware, and common patterns
+- **DatabaseLibrary** - Database models, migrations, and query optimization
+- **AuthLibrary** - Authentication and authorization utilities and guards
+- **ValidationLibrary** - Input validation schemas and error handling
+- **UtilityLibrary** - Common backend utilities, helpers, and business logic
+```
+
+## Cloud-Specific Task Examples
+
+### Infrastructure Foundation
+- [ ] **1.0 Cloud Infrastructure Foundation & Platform Setup**
+  - [ ] 1.1 Design cloud architecture with multi-environment setup (dev, staging, prod)
+  - [ ] 1.2 Configure Infrastructure as Code with Terraform or CloudFormation
+  - [ ] 1.3 Set up VPC, networking, and security groups with proper isolation
+  - [ ] 1.4 Implement identity and access management with least privilege principles
+  - [ ] 1.5 Configure monitoring, logging, and alerting infrastructure
+
+### Backend API Development
+- [ ] **2.0 Scalable Backend API & Microservices Architecture**
+  - [ ] 2.1 Design RESTful API architecture with OpenAPI specification
+  - [ ] 2.2 Implement authentication and authorization with JWT and RBAC
+  - [ ] 2.3 Build core business logic APIs with proper error handling and validation
+  - [ ] 2.4 Set up API gateway with rate limiting, caching, and version management
+  - [ ] 2.5 Implement real-time features with WebSocket or Server-Sent Events
+
+### Data Layer & Storage
+- [ ] **3.0 Database Design & Data Management Strategy**
+  - [ ] 3.1 Design database schema with proper normalization and indexing
+  - [ ] 3.2 Implement database migrations and seeding strategies
+  - [ ] 3.3 Set up caching layer with Redis for performance optimization
+  - [ ] 3.4 Configure backup and disaster recovery procedures
+  - [ ] 3.5 Implement data analytics and reporting infrastructure
+
+### Security & Compliance
+- [ ] **4.0 Security Implementation & Compliance Framework**
+  - [ ] 4.1 Implement comprehensive security scanning and vulnerability management
+  - [ ] 4.2 Set up encryption for data at rest and in transit
+  - [ ] 4.3 Configure secrets management and credential rotation
+  - [ ] 4.4 Implement audit logging and compliance monitoring
+  - [ ] 4.5 Set up security incident response and recovery procedures
+
+### DevOps & Deployment
+- [ ] **5.0 CI/CD Pipeline & Production Deployment**
+  - [ ] 5.1 Build automated testing pipeline with unit, integration, and E2E tests
+  - [ ] 5.2 Configure blue-green deployment with automated rollback capabilities
+  - [ ] 5.3 Implement container orchestration with Kubernetes or ECS
+  - [ ] 5.4 Set up production monitoring with SLA tracking and alerting
+  - [ ] 5.5 Configure auto-scaling policies based on metrics and load patterns
+
+## Timeline Adjustments for Cloud
+
+Cloud infrastructure projects typically require additional time for:
+- Security review and compliance validation (+25-40%)
+- Performance testing and optimization (+20-30%)
+- Infrastructure setup and configuration (+30-50%)
+- DevOps pipeline configuration and testing (+25-35%)
+- Multi-environment testing and deployment (+20-30%)
+
+## Cloud Platform Considerations
+
+### AWS Specific
+- **Services:** Lambda, API Gateway, RDS, S3, CloudFront, ECS/EKS
+- **Patterns:** Serverless-first, event-driven architecture, managed services
+- **Security:** IAM, Secrets Manager, KMS, GuardDuty, Security Hub
+
+### Azure Specific
+- **Services:** Azure Functions, App Service, CosmosDB, Blob Storage, CDN
+- **Patterns:** Hybrid cloud, enterprise integration, Active Directory integration
+- **Security:** Azure AD, Key Vault, Security Center, Sentinel
+
+### GCP Specific
+- **Services:** Cloud Functions, App Engine, Firestore, Cloud Storage, Cloud CDN
+- **Patterns:** Data analytics, machine learning integration, BigQuery
+- **Security:** Cloud IAM, Secret Manager, Cloud Security Command Center
+
+## Target Audience
+
+Assume the primary reader is a **junior to mid-level backend developer** building cloud-native applications with modern DevOps practices within an Nx workspace, requiring guidance on cloud architecture patterns, security implementation, and scalable infrastructure design.

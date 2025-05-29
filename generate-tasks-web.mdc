@@ -1,0 +1,139 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Rule: Generating Web Application Task List from a PRD
+
+## Goal
+
+To guide an AI assistant in creating a detailed, step-by-step task list for implementing a **web application** using Vue.js with modern web standards, emphasizing progressive enhancement, performance optimization, SEO, and scalable deployment within an Nx monorepo structure.
+
+## Target Platform
+
+**Web Applications** - Focus on:
+- Progressive Web App (PWA) capabilities
+- Server-Side Rendering (SSR) and Static Site Generation (SSG)
+- Web performance optimization and Core Web Vitals
+- SEO optimization and social media integration
+- Responsive design and cross-browser compatibility
+- Web accessibility and internationalization
+- Modern web APIs and browser capabilities
+
+## Web-Specific Considerations
+
+### Performance & SEO
+- **Core Web Vitals:** LCP, FID, CLS optimization strategies
+- **Bundle Optimization:** Code splitting, tree shaking, critical CSS
+- **Caching Strategies:** Service worker, HTTP caching, CDN integration
+- **SEO Features:** Meta tags, structured data, sitemap generation
+
+### Progressive Enhancement
+- **PWA Features:** Service worker, manifest, offline capabilities
+- **Modern Web APIs:** Web Workers, IndexedDB, Push Notifications
+- **Responsive Design:** Mobile-first, adaptive layouts, touch interactions
+- **Browser Compatibility:** Polyfills, feature detection, graceful degradation
+
+### User Experience
+- **Loading Performance:** Skeleton screens, progressive loading, instant navigation
+- **Accessibility:** WCAG compliance, screen reader support, keyboard navigation
+- **Internationalization:** Multi-language support, RTL layouts, locale-specific formatting
+- **Social Integration:** Open Graph, Twitter Cards, social sharing
+
+## Process
+
+1.  **Receive PRD Reference:** The user points the AI to a specific PRD file for web application
+2.  **Analyze PRD for Web Patterns:** Focus on web-specific requirements like SEO, performance, accessibility, and browser compatibility
+3.  **Phase 1: Generate Web-Focused Parent Tasks:** Create 10-14 high-level tasks optimized for web development patterns
+4.  **Wait for Confirmation:** Pause and wait for user to respond with "Go"
+5.  **Phase 2: Generate Web Sub-Tasks:** Break down each parent task with web-specific patterns, PWA features, and performance optimization
+6.  **Identify Web Architecture:** Focus on SSR/SSG setup, service workers, and web-optimized stores
+7.  **Generate Final Output:** Combine tasks with web deployment and performance considerations
+
+## Output Format
+
+The generated task list _must_ follow this structure with web-specific components:
+
+```markdown
+## Relevant Components & Architecture
+
+### Vue Web Components
+- **AppShell** - Progressive app shell with navigation and offline support
+- **LazyRoute** - Route-based code splitting with loading states and error boundaries
+- **SEOHead** - Dynamic meta tags, structured data, and social media optimization
+- **ResponsiveLayout** - Mobile-first responsive design with breakpoint management
+- **AccessibleForm** - WCAG-compliant forms with validation and error handling
+
+### Web-Specific Composables
+- **useWebPerformance** - Core Web Vitals monitoring and optimization
+- **usePWA** - Service worker management and offline capabilities
+- **useSEO** - Meta tag management and structured data generation
+- **useWebAPI** - Modern web API integration (geolocation, camera, etc.)
+- **useIntersectionObserver** - Lazy loading and scroll-based animations
+
+### Web Services & APIs
+- **ServiceWorker** - Caching strategies, background sync, and push notifications
+- **AnalyticsService** - Web analytics with privacy-compliant tracking
+- **SEOService** - Sitemap generation and search engine optimization
+- **PerformanceMonitor** - Real user monitoring and Core Web Vitals tracking
+- **CDNService** - Asset optimization and global content delivery
+
+### Web Infrastructure
+- **SSRConfiguration** - Server-side rendering with hydration strategies
+- **PWAManifest** - Progressive web app configuration and capabilities
+- **WebpackOptimization** - Bundle analysis and performance optimization
+- **CSPPolicy** - Content Security Policy for web security
+- **WebAccessibility** - Accessibility testing and ARIA implementation
+
+### Deployment & Hosting
+- **StaticHosting** - CDN deployment with edge computing capabilities
+- **SSRDeployment** - Server-side rendering deployment and scaling
+- **PerformanceOptimization** - Web performance monitoring and optimization
+- **SecurityHeaders** - HTTP security headers and HTTPS configuration
+```
+
+## Web-Specific Task Examples
+
+### Foundation & Progressive Enhancement
+- [ ] **1.0 Web Application Foundation & PWA Setup**
+  - [ ] 1.1 Configure Vue 3 SSR/SSG with Nuxt.js or custom setup in Nx workspace
+  - [ ] 1.2 Implement Progressive Web App with service worker and manifest
+  - [ ] 1.3 Set up responsive design system with mobile-first approach
+  - [ ] 1.4 Configure SEO optimization with meta tags and structured data
+  - [ ] 1.5 Implement accessibility features with WCAG compliance testing
+
+### Performance & Optimization
+- [ ] **2.0 Web Performance & Core Web Vitals**
+  - [ ] 2.1 Optimize bundle size with code splitting and tree shaking
+  - [ ] 2.2 Implement lazy loading strategies for images and components
+  - [ ] 2.3 Configure caching strategies with service worker and HTTP headers
+  - [ ] 2.4 Set up Core Web Vitals monitoring and optimization
+  - [ ] 2.5 Implement critical CSS and above-the-fold optimization
+
+### SEO & Social Integration
+- [ ] **3.0 SEO Optimization & Social Media Integration**
+  - [ ] 3.1 Create dynamic meta tag management with Vue Meta or useHead
+  - [ ] 3.2 Implement structured data and JSON-LD for rich snippets
+  - [ ] 3.3 Build sitemap generation and robots.txt configuration
+  - [ ] 3.4 Set up Open Graph and Twitter Card optimization
+  - [ ] 3.5 Configure analytics and conversion tracking with privacy compliance
+
+### Accessibility & Internationalization
+- [ ] **4.0 Web Accessibility & Internationalization**
+  - [ ] 4.1 Implement comprehensive WCAG compliance with automated testing
+  - [ ] 4.2 Create keyboard navigation and screen reader optimization
+  - [ ] 4.3 Build internationalization with Vue I18n and locale management
+  - [ ] 4.4 Implement RTL language support and cultural adaptations
+  - [ ] 4.5 Set up accessibility monitoring and continuous compliance testing
+
+## Timeline Adjustments for Web
+
+Web applications typically require additional time for:
+- Cross-browser testing and compatibility fixes (+15-20%)
+- SEO optimization and content strategy (+10-15%)
+- Performance optimization and Core Web Vitals compliance (+15-25%)
+- Accessibility compliance and testing (+10-20%)
+
+## Target Audience
+
+Assume the primary reader is a **junior to mid-level Vue.js developer** building modern web applications with focus on performance, SEO, and accessibility within an Nx workspace, requiring guidance on web-specific optimization patterns and deployment strategies.
