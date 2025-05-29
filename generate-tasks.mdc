@@ -84,18 +84,18 @@ The generated task list _must_ follow this structure:
 ## Tasks
 
 - [ ] 1.0 Nx Workspace Foundation & Vue.js Application Setup
-  - [ ] 1.1 Generate Vue 3 application using Nx Vue plugin with TypeScript and Vite configuration
+  - [ ] 1.1 Generate Vue 3 application using Nx Vue plugin with TypeScript and Vite configuration (REQUIRED: use --directory=apps/appname for proper placement)
   - [ ] 1.2 Configure Nx workspace boundaries and dependency rules for library isolation
   - [ ] 1.3 Set up Vue Router with route guards and meta fields for navigation architecture
   - [ ] 1.4 Configure Pinia stores with proper module boundaries and TypeScript integration
   - [ ] 1.5 Establish Nx project tags and lint rules for consistent architecture enforcement
 
 - [ ] 2.0 Shared Library Architecture & Design System
-  - [ ] 2.1 Generate UI component library using Nx generators with Vue 3 Composition API patterns
-  - [ ] 2.2 Create utilities library with shared composables and business logic functions
-  - [ ] 2.3 Build data models library with TypeScript interfaces and validation schemas
-  - [ ] 2.4 Implement theme library with design tokens and Vue-compatible styling system
-  - [ ] 2.5 Generate feature-specific libraries with clear API boundaries and minimal coupling
+  - [ ] 2.1 Generate UI component library using Nx generators with Vue 3 Composition API patterns (REQUIRED: use --directory=libs/libname)
+  - [ ] 2.2 Create utilities library with shared composables and business logic functions (REQUIRED: use --directory=libs/libname)
+  - [ ] 2.3 Build data models library with TypeScript interfaces and validation schemas (REQUIRED: use --directory=libs/libname)
+  - [ ] 2.4 Implement theme library with design tokens and Vue-compatible styling system (REQUIRED: use --directory=libs/libname)
+  - [ ] 2.5 Generate feature-specific libraries with clear API boundaries and minimal coupling (REQUIRED: use --directory=libs/libname)
 
 - [ ] 3.0 Core Feature Implementation with Vue.js Patterns
   - [ ] 3.1 Implement Vue components using script setup syntax and TypeScript for optimal developer experience

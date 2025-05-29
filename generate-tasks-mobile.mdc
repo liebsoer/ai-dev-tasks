@@ -40,6 +40,12 @@ To guide an AI assistant in creating a detailed, step-by-step task list for impl
 - **Security:** Biometric authentication, secure storage, certificate pinning
 - **Accessibility:** Mobile screen readers, voice control, large text support
 
+### Nx Directory Structure Requirements
+**CRITICAL:** When generating mobile applications and libraries, always use:
+- **Mobile Applications:** `nx generate @nx/vue:app myapp --directory=apps/myapp`
+- **Shared Libraries:** `nx generate @nx/vue:lib mylib --directory=libs/mylib`
+- This ensures proper placement in `/apps/myapp/` and `/libs/mylib/` directory structure
+
 ## Process
 
 1.  **Receive PRD Reference:** The user points the AI to a specific PRD file for mobile application

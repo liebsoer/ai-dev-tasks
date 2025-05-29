@@ -33,6 +33,12 @@ To guide an AI assistant in creating a detailed, step-by-step task list for impl
 - **Security:** Code signing, auto-update security, sandboxing considerations
 - **Offline Capabilities:** Local data storage, sync when online
 
+### Nx Directory Structure Requirements
+**CRITICAL:** When generating desktop applications and libraries, always use:
+- **Desktop Applications:** `nx generate @nx/vue:app myapp --directory=apps/myapp`
+- **Shared Libraries:** `nx generate @nx/vue:lib mylib --directory=libs/mylib`
+- This ensures proper placement in `/apps/myapp/` and `/libs/mylib/` directory structure
+
 ### User Experience
 - **Native Feel:** Platform-specific UI patterns and behaviors
 - **Window Management:** Multi-window support, state persistence

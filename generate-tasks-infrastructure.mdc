@@ -40,6 +40,12 @@ To guide an AI assistant in creating a detailed, step-by-step task list for impl
 - **Version Control:** Infrastructure versioning, change management, rollback procedures
 - **Compliance:** Policy as code, security compliance, audit trails
 
+### Nx Directory Structure Requirements
+**CRITICAL:** When generating infrastructure tooling and automation libraries, always use:
+- **Infrastructure Applications:** `nx generate @nx/node:app myinfra --directory=apps/myinfra`
+- **Shared Libraries:** `nx generate @nx/node:lib mylib --directory=libs/mylib`
+- This ensures proper placement in `/apps/myinfra/` and `/libs/mylib/` directory structure
+
 ## Process
 
 1.  **Receive PRD Reference:** The user points the AI to a specific PRD file requiring infrastructure setup

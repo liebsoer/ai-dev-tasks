@@ -40,6 +40,12 @@ To guide an AI assistant in creating a detailed, step-by-step task list for impl
 - **Development Tools:** CLI tools, debugging utilities, protocol inspectors
 - **Documentation:** API docs, usage examples, integration guides
 
+### Nx Directory Structure Requirements
+**CRITICAL:** When generating MCP servers and related libraries, always use:
+- **MCP Server Applications:** `nx generate @nx/node:app myserver --directory=apps/myserver`
+- **Shared Libraries:** `nx generate @nx/node:lib mylib --directory=libs/mylib`
+- This ensures proper placement in `/apps/myserver/` and `/libs/mylib/` directory structure
+
 ## Process
 
 1.  **Receive PRD Reference:** The user points the AI to a specific PRD file for MCP server development
