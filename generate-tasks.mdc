@@ -7,12 +7,15 @@ alwaysApply: false
 
 ## Goal
 
-To guide an AI assistant in creating a detailed, step-by-step task list in Markdown format based on an existing Product Requirements Document (PRD). The task list should guide a developer through implementation.
+To guide an AI assistant in creating a detailed, step-by-step task list in Markdown format based on an existing Product Requirements Document (PRD). The task list should guide a developer through implementing a Vue.js application using modern Vue 3 patterns, composables, and architectural best practices within an Nx monorepo structure.
 
 ## Output
 
 - **Format:** Markdown (`.md`)
-- **Location:** `/tasks/`
+- **Location:** `/tasks/[application-name]/` (e.g., `/tasks/user-profile/`)
+- **Filename Structure:** The filename should be prefixed with `tasks-` followed by the base name of the PRD file, ensuring it is descriptive and matches the feature being implemented.
+  - Example: If the PRD file is named `prd-user-profile-editing.md`, the task list file should be named `tasks-prd-user-profile-editing.md`.
+- **Directory Structure:** The task list should be saved in a subdirectory named after the application or feature area, e.g., `/tasks/user-profile/`.
 - **Filename:** `tasks-[prd-file-name].md` (e.g., `tasks-prd-user-profile-editing.md`)
 
 ## Process
@@ -21,9 +24,9 @@ To guide an AI assistant in creating a detailed, step-by-step task list in Markd
 2.  **Analyze PRD:** The AI reads and analyzes the functional requirements, user stories, and other sections of the specified PRD.
 3.  **Phase 1: Generate Parent Tasks:** Based on the PRD analysis, create the file and generate the main, high-level tasks required to implement the feature. Use your judgement on how many high-level tasks to use. It's likely to be about 5. Present these tasks to the user in the specified format (without sub-tasks yet). Inform the user: "I have generated the high-level tasks based on the PRD. Ready to generate the sub-tasks? Respond with 'Go' to proceed."
 4.  **Wait for Confirmation:** Pause and wait for the user to respond with "Go".
-5.  **Phase 2: Generate Sub-Tasks:** Once the user confirms, break down each parent task into smaller, actionable sub-tasks necessary to complete the parent task. Ensure sub-tasks logically follow from the parent task and cover the implementation details implied by the PRD.
-6.  **Identify Relevant Files:** Based on the tasks and PRD, identify potential files that will need to be created or modified. List these under the `Relevant Files` section, including corresponding test files if applicable.
-7.  **Generate Final Output:** Combine the parent tasks, sub-tasks, relevant files, and notes into the final Markdown structure.
+5.  **Phase 2: Generate Sub-Tasks:** Once the user confirms, break down each parent task into smaller, actionable sub-tasks necessary to complete the parent task. Focus on architectural decisions, component design patterns, Vue.js best practices, and Nx monorepo organization rather than specific file creation. Ensure sub-tasks logically follow from the parent task and cover the implementation patterns implied by the PRD.
+6.  **Identify Relevant Architecture:** Based on the tasks and PRD, identify the Vue.js architectural components needed: Vue components, composables, stores, services, configuration modules, and Nx libraries for code sharing. List these under the `Relevant Components & Architecture` section.
+7.  **Generate Final Output:** Combine the parent tasks, sub-tasks, architectural components, and notes into the final Markdown structure optimized for Vue.js development within an Nx workspace.
 8.  **Save Task List:** Save the generated document in the `/tasks/` directory with the filename `tasks-[prd-file-name].md`, where `[prd-file-name]` matches the base name of the input PRD file (e.g., if the input was `prd-user-profile-editing.md`, the output is `tasks-prd-user-profile-editing.md`).
 
 ## Output Format
@@ -31,28 +34,65 @@ To guide an AI assistant in creating a detailed, step-by-step task list in Markd
 The generated task list _must_ follow this structure:
 
 ```markdown
-## Relevant Files
+## Relevant Components & Architecture
 
-- `path/to/potential/file1.ts` - Brief description of why this file is relevant (e.g., Contains the main component for this feature).
-- `path/to/file1.test.ts` - Unit tests for `file1.ts`.
-- `path/to/another/file.tsx` - Brief description (e.g., API route handler for data submission).
-- `path/to/another/file.test.tsx` - Unit tests for `another/file.tsx`.
-- `lib/utils/helpers.ts` - Brief description (e.g., Utility functions needed for calculations).
-- `lib/utils/helpers.test.ts` - Unit tests for `helpers.ts`.
+### Vue Components
+- **ComponentName** - High-level description of purpose and functionality (e.g., Main navigation component with dynamic routing)
+- **AnotherComponent** - Description of responsibility (e.g., Data visualization dashboard with reactive charts)
+
+### Composables & Business Logic
+- **useFeatureName** - Description of composable responsibility (e.g., Manages user authentication state and JWT tokens)
+- **useAnotherFeature** - Description (e.g., Handles data fetching with caching and error states)
+
+### Stores & State Management
+- **FeatureStore** - Description of state management responsibility (e.g., Centralizes user preferences and app configuration)
+- **DataStore** - Description (e.g., Manages application data with persistence and synchronization)
+
+### Services & Utilities
+- **ApiService** - Description of service layer (e.g., HTTP client with interceptors and error handling)
+- **UtilityModule** - Description (e.g., Common helper functions for data transformation and validation)
+
+### Nx Libraries & Shared Code
+- **SharedLibrary** - Description of shared library functionality (e.g., Common UI components across multiple apps)
+- **UtilityLibrary** - Description (e.g., Shared business logic and data models)
+- **FeatureLibrary** - Description (e.g., Domain-specific functionality that can be reused)
+
+### Infrastructure & Configuration
+- **RouterConfiguration** - Description (e.g., Vue Router setup with guards and meta fields)
+- **AppConfiguration** - Description (e.g., Vite build configuration and environment management)
+- **NxConfiguration** - Description (e.g., Nx workspace configuration, targets, and generators)
 
 ### Notes
 
-- Unit tests should typically be placed alongside the code files they are testing (e.g., `MyComponent.tsx` and `MyComponent.test.tsx` in the same directory).
-- Use `npx jest [optional/path/to/test/file]` to run tests. Running without a path executes all tests found by the Jest configuration.
+- Tasks should focus on architectural patterns and component design rather than specific file implementations
+- Allow AI flexibility to choose optimal Vue 3 patterns (Composition API, script setup, etc.)
+- Emphasize composable-first approach for business logic
+- Consider Pinia for state management and Vue Router for navigation
+- Use Vite as the build tool and TypeScript for type safety
+- Leverage Nx for monorepo management, code sharing, and build optimization
+- Create shared libraries for reusable components, utilities, and business logic
+- Use Nx generators for consistent project structure and code generation
+- Implement proper dependency management between apps and libraries
+- Testing should cover component behavior, composable logic, and integration scenarios
+- Use Nx's affected commands for efficient CI/CD and testing strategies
 
 ## Tasks
 
-- [ ] 1.0 Parent Task Title
-  - [ ] 1.1 [Sub-task description 1.1]
-  - [ ] 1.2 [Sub-task description 1.2]
-- [ ] 2.0 Parent Task Title
-  - [ ] 2.1 [Sub-task description 2.1]
-- [ ] 3.0 Parent Task Title (may not require sub-tasks if purely structural or configuration)
+- [ ] 1.0 Nx Workspace Setup & Architecture Planning
+  - [ ] 1.1 [Generate Vue application using Nx generators]
+  - [ ] 1.2 [Configure workspace dependencies and library structure]
+- [ ] 2.0 Shared Library Creation
+  - [ ] 2.1 [Create shared UI component library]
+  - [ ] 2.2 [Generate utility libraries for common functionality]
+- [ ] 3.0 Feature Implementation
+  - [ ] 3.1 [Implement core Vue components and composables]
+  - [ ] 3.2 [Set up state management with proper library boundaries]
+- [ ] 4.0 Integration & Testing
+  - [ ] 4.1 [Configure Nx testing strategies and affected commands]
+  - [ ] 4.2 [Implement end-to-end testing across library boundaries]
+- [ ] 5.0 Build & Deployment Configuration
+  - [ ] 5.1 [Configure Nx build targets and optimization]
+  - [ ] 5.2 [Set up deployment pipelines with affected builds]
 ```
 
 ## Interaction Model
@@ -61,4 +101,4 @@ The process explicitly requires a pause after generating parent tasks to get use
 
 ## Target Audience
 
-Assume the primary reader of the task list is a **junior developer** who will implement the feature.
+Assume the primary reader of the task list is a **junior to mid-level Vue.js developer** who will implement the feature within an Nx monorepo. Tasks should be described at an architectural level that allows flexibility in choosing specific Vue 3 patterns, file organization, and implementation approaches while maintaining best practices. Include guidance on Nx library creation, code sharing strategies, and monorepo-specific workflows.
