@@ -1,0 +1,182 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# AI Task Management Protocol
+This document outlines the protocol for managing task lists in markdown files, specifically for AI-assisted development tasks. It provides a structured approach to ensure clarity, maintainability, and effective collaboration.
+
+## When Things Go Wrong or Complex
+
+**Escalation Protocol:**
+- **Unexpected Complexity:** If a sub-task becomes significantly more complex than anticipated:
+  1. Document the complexity in `.ai-context/context-notes.md`
+  2. Break down the sub-task into smaller, manageable pieces
+  3. Ask user for guidance before proceeding with new approach
+  4. Update task list with revised sub-tasks
+
+**Error Recovery:**
+- **Wrong Approach Discovered:** Stop immediately, document what went wrong in `decisions.md`
+- **Dependency Blockers:** Flag in `context-notes.md`, propose alternative approaches to user
+- **Technical Issues:** Document exact error, attempted solutions, ask for user guidance
+
+**Decision Escalation Triggers:**
+- Architectural changes required beyond current scope
+- Security or performance implications discovered
+- Multiple valid approaches with significant trade-offs
+- Resource or timeline impacts > 20% of current estimates
+
+## Context Switching Optimization
+
+**Session Start Protocol:**
+1. **Context Recovery** (first 2-3 minutes):
+   - Read `.ai-context/session-log.md` for last session summary
+   - Check `.ai-context/context-notes.md` for important constraints/blockers
+   - Review recent entries in `decisions.md` for context
+
+2. **Current State Assessment:**
+   - Identify next sub-task from task list
+   - Verify understanding of requirements and approach
+   - Check for any new dependencies or changes since last session
+
+3. **Alignment Confirmation:**
+   - Summarize understanding to user before starting
+   - Confirm next sub-task is still the priority
+   - Get explicit "yes" to proceed
+
+**Session Handoff Protocol:**
+- Update `session-log.md` with current progress and next steps
+- Flag any unresolved questions in `context-notes.md`
+- Document key decisions made during session in `decisions.md`
+
+## Quality Gates Integration
+
+**Definition of Done (per sub-task type):**
+- **Code Implementation:** Tests pass, follows project patterns, documented, no obvious bugs
+- **Documentation:** Clear, accurate, addresses target audience needs, examples included
+- **Configuration:** Works in target environment, documented, version controlled
+- **Design/UI:** Meets requirements, accessible, responsive, consistent with design system
+
+**Pre-Completion Checklist:**
+```
+Before marking [x] complete:
+- [ ] Core functionality works as specified
+- [ ] Edge cases considered and handled
+- [ ] Documentation updated if needed
+- [ ] No obvious bugs or issues
+- [ ] Follows established patterns/standards
+- [ ] Related files updated in "Relevant Files"
+```
+
+**Quality Review Integration with Retrospectives:**
+- Use retrospectives to identify quality gaps and improve standards
+- Track recurring issues to strengthen future quality gates
+- Document successful quality patterns in `patterns.md`
+- Adjust Definition of Done based on project learningscol
+
+## Implementation Workflow:
+1. Check which sub-task is next in the task list
+2. Implement one sub-task at a time - do NOT proceed to next without user permission
+3. Update task list immediately upon completion:
+   - Mark finished sub-task as `[x]`
+   - Mark parent task as `[x]` when ALL subtasks are complete
+4. Update "Relevant Files" section with any created/modified files
+5. Pause and wait for user's "yes" or "y" before continuing
+
+## Task List Maintenance:
+- Add newly discovered tasks as they emerge
+- Keep file descriptions accurate and up-to-date
+- Track task dependencies and blockers in `.ai-context` if needed
+
+## Reflective Retrospective Process
+
+**Session Retrospectives** (after every 3-5 completed tasks or at natural breakpoints):
+1. **Progress Review:** Document what was accomplished and current project state
+2. **Approach Analysis:** Evaluate what worked well and what could be improved
+3. **Blocker Assessment:** Identify and document any obstacles or dependencies
+4. **Learning Capture:** Record insights, patterns, or reusable solutions discovered
+5. **Next Steps Planning:** Update priorities and approach for upcoming tasks
+
+**Documentation in `.ai-context`:**
+- Update `session-log.md` with retrospective findings
+- Record key insights in `decisions.md` with rationale
+- Log process improvements in `patterns.md` for future reference
+- Flag unresolved blockers in `context-notes.md`
+
+**Milestone Retrospectives** (at major project phases):
+- Comprehensive review of architectural decisions and their outcomes
+- Analysis of timeline accuracy and estimation improvements
+- Documentation of successful patterns for similar future projects
+- Identification of process optimizations for subsequent phases
+
+## Cognitive Load Management
+
+**Quick Reference Card** (for immediate access during work):
+```
+## Current Task Checklist:
+- [ ] Check next sub-task in list
+- [ ] Implement ONE sub-task only  
+- [ ] Mark [x] when complete
+- [ ] Update Relevant Files
+- [ ] PAUSE and ask permission
+```
+
+**Information Hierarchy:**
+- **Primary Focus:** Current sub-task and its immediate requirements
+- **Secondary Context:** Related files, dependencies, recent decisions
+- **Background Info:** Project overview, long-term goals (access as needed)
+
+## Task Implementation
+- **One sub-task at a time:** Do **NOT** start the next sub‑task until you ask the user for permission and they say “yes” or "y"
+- **Completion protocol:**  
+  1. When you finish a **sub‑task**, immediately mark it as completed by changing `[ ]` to `[x]`.  
+  2. If **all** subtasks underneath a parent task are now `[x]`, also mark the **parent task** as completed.  
+- Stop after each sub‑task and wait for the user’s go‑ahead.
+
+## Task List Maintenance
+
+1. **Update the task list as you work:**
+   - Mark tasks and subtasks as completed (`[x]`) per the protocol above.
+   - Add new tasks as they emerge.
+
+2. **Maintain the “Relevant Files” section:**
+   - List every file created or modified.
+   - Give each file a one‑line description of its purpose.
+
+## AI Instructions
+
+### AI Context Folder Management
+The `.ai-context` folder enables structured AI workflow management and session continuity:
+
+**Standard File Organization:**
+- `session-log.md` - Chronological work sessions and major milestones
+- `decisions.md` - Technical and architectural decisions with rationale
+- `task-progress.md` - Detailed progress tracking beyond basic checkboxes
+- `context-notes.md` - Important constraints, requirements, and discoveries
+- `analysis/` - Subfolder for detailed analysis documents
+- `drafts/` - Subfolder for work-in-progress content
+
+**Structure Extensions:**
+The standard organization can be extended when project complexity or specific requirements warrant additional structure:
+- Create domain-specific files (e.g., `security-notes.md`, `performance-analysis.md`)
+- Add specialized subfolders (e.g., `research/`, `prototypes/`, `integrations/`)
+- Use numbered prefixes for sequential analysis (e.g., `01-initial-analysis.md`, `02-revised-approach.md`)
+- Maintain project-specific documentation patterns when they provide clear advantages
+
+**Usage Protocol:**
+- Track work progress, decisions, and context across AI sessions
+- Store AI-specific notes, analysis, and intermediate work products
+- Maintain session continuity for complex, multi-session projects
+- All content must be human-readable markdown or plain text
+- AI may create/modify files within folder, but not delete the folder itself
+
+When working with task lists, the AI must:
+
+1. Regularly update the task list file after finishing any significant work.
+2. Follow the completion protocol:
+   - Mark each finished **sub‑task** `[x]`.
+   - Mark the **parent task** `[x]` once **all** its subtasks are `[x]`.
+3. Add newly discovered tasks.
+4. Keep “Relevant Files” accurate and up to date.
+5. Before starting work, check which sub‑task is next.
+6. After implementing a sub‑task, update the file and then pause for user approval.

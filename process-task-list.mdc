@@ -3,9 +3,444 @@ description:
 globs: 
 alwaysApply: false
 ---
-# Task List Management
+# AI Task Management Protocol
+This document outlines the protocol for managing task lists in markdown files, specifically for AI-assisted development tasks. It provides a structured approach to ensure clarity, maintainability, and effective collaboration.
 
-Guidelines for managing task lists in markdown files to track progress on completing a PRD
+## Task Implementation
+- **One sub-task at a time:** Do **NOT** start the next sub‑task until you ask the user for permission and they say "yes" or "y"
+
+1. **Pre-Task Setup:**
+   - Context Recovery (2-3 minutes)
+   - Branch Creation: `feature/[task-number]-[task-title]`
+   - Timer Start: 30-minute sub-task countdown
+   - Alignment Confirmation with user
+
+2. **During Task Execution:**
+   - 15-minute alert: Progress milestone check
+   - Commit at logical breakpoints: feat/fix/docs/test/refactor
+   - 20-minute alert: Approach validation
+   - 30-minute alert: Complexity reassessment trigger
+
+3. **Task Completion:**
+   - Final commit: Complete implementation with tests
+   - Release notes update: Document changes with semantic versioning
+   - Quality gate verification: All checklist items complete
+   - Pull request creation: Ready for code review
+   - Session handoff documentation: Update context files
+
+4. Follow the completion protocol:
+   - Mark each finished **sub‑task** `[x]`.
+   - Mark the **parent task** `[x]` once **all** its subtasks are `[x]`.
+5. Add newly discovered tasks.
+6. Keep "Relevant Files" accurate and up to date.
+7. Before starting work, check which sub‑task is next.
+8. After implementing a sub‑task, update the file and then pause for user approval.
+9. Do not proceed to the next sub‑task until the user confirms with "yes" or "y".
+- **Completion protocol:**  
+  1. When you finish a **sub‑task**, immediately mark it as completed by changing `[ ]` to `[x]`.  
+  2. If **all** subtasks underneath a parent task are now `[x]`, also mark the **parent task** as completed.  
+- Stop after each sub‑task and wait for the user's go‑ahead.
+
+**Git Flow Integration:**
+- **Branch Creation Protocol:**
+  1. Before starting sub-task: `git checkout -b feature/[task-number]-[task-title]`
+  2. Document branch in `.ai-context/session-log.md`
+  3. Link branch to task checkbox in markdown
+- **Branch Completion:**
+  - All sub-task requirements met per Definition of Done
+  - Tests passing and code reviewed
+  - Documentation updated
+  - Ready for merge to develop branch
+
+**Conventional Commits Strategy:**
+- **Simple Sub-tasks:** One commit per completion with clear scope
+  - `feat(component): implement user authentication endpoint`
+  - `fix(git): resolve credential validation issue`
+  - `docs(api): add authentication endpoint documentation`
+- **Complex Sub-tasks:** Multiple commits at logical breakpoints
+  - `feat(search): setup search indexing infrastructure`
+  - `feat(search): implement text tokenization and stemming`
+  - `perf(search): optimize search performance for large datasets`
+  - `feat(search): complete full-text search with testing`
+- **Commit Frequency:** Commit at logical breakpoints, not arbitrary time intervals
+- **Commit Messages:** Follow conventional commits: `type(scope): description`
+
+**Release Notes Integration:**
+- **After Each Commit:** Update or create `RELEASE-NOTES.md` with semantic versioning
+- **Version Strategy:**
+  - **PATCH (x.x.+1):** Bug fixes, documentation updates, refactoring
+    - `fix(auth): resolve password validation edge case`
+    - `docs(api): clarify authentication requirements`
+  - **MINOR (x.+1.0):** New features, enhancements (backward compatible)
+    - `feat(search): add full-text search capability`
+    - `feat(ui): implement user profile management`
+  - **MAJOR (+1.0.0):** Breaking changes, architectural shifts
+    - `feat!: migrate from REST to GraphQL API`
+    - `refactor!: restructure authentication system`
+- **Release Notes Format:**
+  ```markdown
+  # Release Notes
+  
+  ## [1.2.1] - 2025-05-30
+  ### Fixed
+  - Password validation edge case in authentication
+  - Documentation clarity for API endpoints
+  
+  ## [1.2.0] - 2025-05-29
+  ### Added
+  - Full-text search functionality with indexing
+  - User profile management interface
+  
+  ### Changed
+  - Improved search performance for large datasets
+  ```
+- **Automation Points:**
+  - Update version in `package.json` if applicable
+  - Link commit hash to release notes entry
+  - Tag release after sub-task completion for traceability
+
+## When Things Go Wrong or Complex
+
+**Escalation Protocol:**
+- **Unexpected Complexity:** If a sub-task becomes significantly more complex than anticipated:
+  1. Document the complexity in `.ai-context/context-notes.md`
+  2. **Complexity Trigger Analysis:** Record what specific factors caused the complexity increase
+  3. Break down the sub-task into smaller, manageable pieces
+  4. Ask user for guidance before proceeding with new approach
+  5. Update task list with revised sub-tasks
+  6. Consider creating additional feature branches for complex sub-components
+  7. **Update Estimation Database:** Log complexity factors for future reference
+
+**Error Recovery:**
+- **Wrong Approach Discovered:** Stop immediately, document what went wrong in `decisions.md`
+- **Dependency Blockers:** Flag in `context-notes.md`, propose alternative approaches to user
+- **Technical Issues:** Document exact error, attempted solutions, ask for user guidance
+- **Git Integration Issues:** 
+  - **Package/dependency conflicts:** Document exact versions, propose downgrade/upgrade path with rationale
+  - **API documentation outdated/incorrect:** Test actual behavior, document discrepancies, flag for user review
+  - **User requirements need clarification:** Pause implementation, document specific ambiguities, request clarification
+
+**Decision Escalation Triggers:**
+- Architectural changes required beyond current scope
+- Security or performance implications discovered
+- Multiple valid approaches with significant trade-offs
+- Resource or timeline impacts > 20% of current estimates
+
+## Context Switching Optimization
+
+**Session Start Protocol:**
+1. **Context Recovery** (first 2-3 minutes):
+   - Read `.ai-context/session-log.md` for last session summary
+   - Check `.ai-context/context-notes.md` for important constraints/blockers
+   - Review recent entries in `decisions.md` for context
+
+2. **Current State Assessment:**
+   - Identify next sub-task from task list
+   - Verify understanding of requirements and approach
+   - Check for any new dependencies or changes since last session
+
+3. **Alignment Confirmation:**
+   - Summarize understanding to user before starting
+   - Confirm next sub-task is still the priority
+   - Get explicit "yes" to proceed
+
+**Session Handoff Protocol:**
+- Update `session-log.md` with current progress and next steps
+- Flag any unresolved questions in `context-notes.md`
+- Document key decisions made during session in `decisions.md`
+
+**Session Handoff Templates:**
+```markdown
+## Session Handoff - [Date] [Time]
+### Completed This Session:
+- [x] Sub-task description with outcome
+- [x] Key decisions made (link to decisions.md)
+
+### Current State:
+- Active branch: feature/[task-number]-[title]
+- Next sub-task: [description]
+- Blockers/Questions: [list any impediments]
+
+### Context for Next Session:
+- Key files modified: [list]
+- Important constraints to remember: [list]
+- Approach working well: [what to continue]
+- Approach to reconsider: [what to change]
+```
+
+**Time Management Within Sessions:**
+- **Sub-task Time Check:** If a sub-task is taking >30 minutes, pause and reassess complexity
+- **Progress Milestones:** Every 15-20 minutes, briefly assess if approach is working
+- **Complexity Escalation:** If stuck on same issue >10 minutes, document and escalate per "When Things Go Wrong" protocol
+- **Session Length:** Aim for natural breakpoints every 45-60 minutes for handoff documentation
+
+**Automated Workflow Integration:**
+- **Timer Integration Points:**
+  - Sub-task Timer: Auto-start 30-minute countdown when task begins
+  - Progress Alerts: 15 & 20-minute milestone notifications
+  - Stuck Timer: Alert at 10-minute threshold for escalation
+  - Session Timer: 45-minute warning, 60-minute handoff reminder
+- **AI Context Integration:**
+  - Auto-update `.ai-context/session-log.md` with timer milestones
+  - Trigger retrospective prompts at natural breakpoints
+  - Schedule context recovery reminders for session starts
+
+## Quality Gates Integration
+
+**Definition of Done (per sub-task type):**
+- **Code Implementation:** Tests pass, follows project patterns, documented, no obvious bugs, release notes updated
+- **Documentation:** Clear, accurate, addresses target audience needs, examples included, version documented
+- **Configuration:** Works in target environment, documented, version controlled, release notes reflect changes
+- **Design/UI:** Meets requirements, accessible, responsive, consistent with design system, changes documented
+
+**Pre-Completion Checklist:**
+```
+Before marking [x] complete:
+- [ ] Core functionality works as specified
+- [ ] Edge cases considered and handled
+- [ ] Documentation updated if needed
+- [ ] No obvious bugs or issues
+- [ ] Follows established patterns/standards
+- [ ] Related files updated in "Relevant Files"
+- [ ] RELEASE-NOTES.md updated with appropriate semantic version
+- [ ] Commit follows conventional commit format
+- [ ] Performance impact documented if applicable
+- [ ] Security considerations addressed if relevant
+- [ ] Success patterns documented if breakthrough approach used
+- [ ] Complexity factors logged for future estimation improvement
+```
+
+**Quality Review Integration with Retrospectives:**
+- Use retrospectives to identify quality gaps and improve standards
+- Track recurring issues to strengthen future quality gates
+- Document successful quality patterns in `patterns.md`
+- Adjust Definition of Done based on project learnings
+
+## Release Notes and Versioning
+
+**Semantic Versioning Protocol:**
+- **MAJOR.MINOR.PATCH** format (e.g., 1.2.3)
+- **Version Increment Decision Matrix:**
+  
+  | Change Type | Version Impact | Example |
+  |-------------|----------------|---------|
+  | Bug fixes, docs, refactor | PATCH | `fix(auth): resolve validation bug` → 1.2.3 → 1.2.4 |
+  | New features (backward compatible) | MINOR | `feat(search): add filters` → 1.2.3 → 1.3.0 |
+  | Breaking changes | MAJOR | `feat!: new API structure` → 1.2.3 → 2.0.0 |
+
+**Release Notes Workflow:**
+1. **After Each Commit:** Update `RELEASE-NOTES.md` in project root
+2. **Version Decision:** Use commit type to determine version increment
+3. **Entry Format:**
+   ```markdown
+   ## [1.3.0] - 2025-05-30
+   ### Added
+   - Full-text search with advanced filtering (commit: abc123f)
+   - User preference management interface (commit: def456a)
+   
+   ### Changed
+   - Improved search performance by 40% (commit: ghi789b)
+   
+   ### Fixed
+   - Authentication timeout issue (commit: jkl012c)
+   ```
+
+**Practical Release Notes Example:**
+
+*Before starting Musely task 4.2 (Search Engine):*
+```markdown
+# Release Notes - Musely
+
+## [1.1.0] - 2025-05-30
+### Added
+- Basic product listing interface (commit: abc123f)
+- User authentication system (commit: def456a)
+
+## [1.0.0] - 2025-05-29
+### Added
+- Initial project setup and configuration
+- Basic routing and navigation structure
+```
+
+*After completing search infrastructure sub-task:*
+```markdown
+## [1.2.0] - 2025-05-30
+### Added
+- Search indexing infrastructure with Elasticsearch integration (commit: search789x)
+- Text tokenization and stemming algorithms (commit: token456y)
+
+### Changed
+- Database schema optimized for search performance (commit: schema123z)
+```
+
+*After completing full search feature:*
+```markdown
+## [1.3.0] - 2025-05-30
+### Added
+- Complete full-text search functionality with filters (commit: search-complete-abc)
+- Advanced search UI with autocomplete (commit: search-ui-def)
+- Search analytics and performance monitoring (commit: analytics-ghi)
+
+### Performance
+- Search response time: <200ms for 10k+ products
+- Memory usage optimized: 30% reduction in search queries
+```
+
+**Automation Integration:**
+- Link commit hashes for full traceability
+- Tag releases with git tags: `git tag v1.3.0`
+- Auto-generate from conventional commits where possible
+- Include performance metrics and impact assessment
+
+**Release Notes Quality Standards:**
+- **Performance Metrics:** Include measurable improvements (response time, memory usage, throughput)
+- **Impact Assessment:** Describe user-facing benefits and technical improvements
+- **Breaking Changes:** Clearly document migration steps and deprecation timelines
+- **Dependencies:** Note any new dependencies or version requirements
+
+**Cross-Reference Protocol:**
+- Link release notes entries to original task list items
+- Reference feature branch names in release notes
+- Connect retrospective learnings to version improvements
+- Track technical debt resolution across versions
+
+## Cross-Project Learning Integration
+
+**Pattern Recognition and Reuse:**
+- **Success Pattern Documentation:** After completing major features, document what approaches worked exceptionally well in `patterns.md`
+- **Cross-Project Pattern Library:** Maintain a shared knowledge base of successful implementation patterns
+- **Estimation Improvement:** Track complexity triggers and time estimates to improve future task breakdown accuracy
+
+**Knowledge Transfer Protocol:**
+```markdown
+## Project Completion - Pattern Extraction
+### High-Impact Patterns (document in shared patterns.md):
+- Technical approaches that exceeded expectations
+- Process optimizations that saved significant time
+- Error recovery strategies that worked well
+- Communication patterns that improved collaboration
+
+### Lessons for Future Projects:
+- Complexity indicators that suggest task breakdown
+- Technology combinations that work well together
+- Testing strategies that caught issues early
+- Documentation approaches that stakeholders valued
+```
+
+**Dependency Complexity Mapping:**
+- **Complexity Triggers:** Document what makes tasks unexpectedly complex for better future estimation
+  - New technology integration points
+  - Cross-system dependencies
+  - Performance optimization requirements
+  - Security implementation challenges
+- **Estimation Calibration:** Track actual vs. estimated effort to improve future planning
+
+## Success Metrics and Continuous Improvement
+
+**Outcome Tracking:**
+- **Velocity Metrics:** Track sub-tasks completed per session and accuracy of time estimates
+- **Quality Indicators:** Monitor bug discovery rates, rework frequency, and stakeholder satisfaction
+- **Process Effectiveness:** Measure context recovery time, escalation frequency, and pattern reuse success
+- **Communication Quality:** Track alignment accuracy and reduced clarification requests
+
+**Success Pattern Recognition:**
+```markdown
+## High-Impact Approach Documentation
+### What Worked Exceptionally Well:
+- Technical Approach: [specific implementation method]
+- Process Innovation: [workflow improvement that saved time]
+- Communication Pattern: [interaction style that improved alignment]
+- Tool Integration: [technology combination that enhanced productivity]
+
+### Quantified Impact:
+- Time Saved: [specific measurements]
+- Quality Improvement: [error reduction, performance gains]
+- Stakeholder Value: [business impact, user experience enhancement]
+
+### Replication Guidelines:
+- Prerequisites: [what conditions enable this approach]
+- Adaptation Notes: [how to modify for different contexts]
+- Risk Mitigation: [potential issues and how to avoid them]
+```
+
+**Continuous Calibration:**
+- **Estimation Accuracy:** Compare predicted vs. actual effort to improve future planning
+- **Technology Learning Curves:** Document learning time for new tools/frameworks
+- **Stakeholder Communication:** Refine techniques that improve requirement clarity
+- **Quality Gate Effectiveness:** Adjust checklists based on issue discovery patterns
+
+## Implementation Workflow:
+1. Check which sub-task is next in the task list
+2. Implement one sub-task at a time - do NOT proceed to next without user permission
+3. Update task list immediately upon completion:
+   - Mark finished sub-task as `[x]`
+   - Mark parent task as `[x]` when ALL subtasks are complete
+4. Update "Relevant Files" section with any created/modified files
+5. **Release Documentation:**
+   - Update or create `RELEASE-NOTES.md` with semantic versioning
+   - Document what changed, why, and any breaking changes
+   - Link commit hash for traceability
+6. Pause and wait for user's "yes" or "y" before continuing
+
+## Task List Maintenance:
+- Add newly discovered tasks as they emerge
+- Keep file descriptions accurate and up-to-date
+- Track task dependencies and blockers in `.ai-context` if needed
+
+## Reflective Retrospective Process
+
+**Session Retrospectives** (after every 3-5 completed tasks or at natural breakpoints):
+1. **Progress Review:** Document what was accomplished and current project state
+2. **Approach Analysis:** Evaluate what worked well and what could be improved
+3. **Blocker Assessment:** Identify and document any obstacles or dependencies
+4. **Learning Capture:** Record insights, patterns, or reusable solutions discovered
+5. **Next Steps Planning:** Update priorities and approach for upcoming tasks
+
+**Documentation in `.ai-context`:**
+- Update `session-log.md` with retrospective findings
+- Record key insights in `decisions.md` with rationale
+- Log process improvements in `patterns.md` for future reference
+- Flag unresolved blockers in `context-notes.md`
+
+**Milestone Retrospectives** (at major project phases):
+- Comprehensive review of architectural decisions and their outcomes
+- Analysis of timeline accuracy and estimation improvements
+- Documentation of successful patterns for similar future projects
+- Identification of process optimizations for subsequent phases
+
+## Cognitive Load Management
+
+**Quick Reference Card** (for immediate access during work):
+```
+## Current Task Checklist:
+- [ ] Check next sub-task in list
+- [ ] Implement ONE sub-task only  
+- [ ] Mark [x] when complete
+- [ ] Update Relevant Files
+- [ ] Update RELEASE-NOTES.md with semantic version
+- [ ] Stuck >10 min? Document & escalate
+- [ ] Complexity changed? Break down & ask user
+- [ ] PAUSE and ask permission
+```
+
+**Information Hierarchy:**
+- **Primary Focus:** Current sub-task and its immediate requirements
+  - *Example: "Implement user authentication endpoint with email/password validation"*
+- **Secondary Context:** Related files, dependencies, recent decisions
+  - *Example: "Uses JWT library, follows existing API patterns in auth.js, user decided on bcrypt for hashing"*
+- **Background Info:** Project overview, long-term goals (access as needed)
+  - *Example: "Part of larger user management system, will later integrate with OAuth providers"*
+
+**Context Switching Checklist:**
+```
+When resuming work after a break:
+- [ ] Read session-log.md (last 2-3 entries)
+- [ ] Check context-notes.md for blockers/constraints
+- [ ] Review decisions.md for recent choices
+- [ ] Confirm next sub-task is still priority
+- [ ] Verify branch and working directory state
+- [ ] Get explicit user confirmation to proceed
+```
 
 ## Task Implementation
 - **One sub-task at a time:** Do **NOT** start the next sub‑task until you ask the user for permission and they say “yes” or "y"
@@ -26,6 +461,34 @@ Guidelines for managing task lists in markdown files to track progress on comple
 
 ## AI Instructions
 
+### AI Context Folder Management
+The `.ai-context` folder enables structured AI workflow management and session continuity:
+
+**Standard File Organization:**
+- `session-log.md` - Chronological work sessions and major milestones
+- `decisions.md` - Technical and architectural decisions with rationale
+- `task-progress.md` - Detailed progress tracking beyond basic checkboxes
+- `context-notes.md` - Important constraints, requirements, and discoveries
+- `patterns.md` - Successful approaches and reusable solutions from this project
+- `estimation-calibration.md` - Complexity factors and time tracking for future reference
+- `analysis/` - Subfolder for detailed analysis documents
+- `drafts/` - Subfolder for work-in-progress content
+- `RELEASE-NOTES.md` - Semantic versioned changelog with commit traceability
+
+**Structure Extensions:**
+The standard organization can be extended when project complexity or specific requirements warrant additional structure:
+- Create domain-specific files (e.g., `security-notes.md`, `performance-analysis.md`)
+- Add specialized subfolders (e.g., `research/`, `prototypes/`, `integrations/`)
+- Use numbered prefixes for sequential analysis (e.g., `01-initial-analysis.md`, `02-revised-approach.md`)
+- Maintain project-specific documentation patterns when they provide clear advantages
+
+**Usage Protocol:**
+- Track work progress, decisions, and context across AI sessions
+- Store AI-specific notes, analysis, and intermediate work products
+- Maintain session continuity for complex, multi-session projects
+- All content must be human-readable markdown or plain text
+- AI may create/modify files within folder, but not delete the folder itself
+
 When working with task lists, the AI must:
 
 1. Regularly update the task list file after finishing any significant work.
@@ -36,3 +499,4 @@ When working with task lists, the AI must:
 4. Keep “Relevant Files” accurate and up to date.
 5. Before starting work, check which sub‑task is next.
 6. After implementing a sub‑task, update the file and then pause for user approval.
+7. Do not proceed to the next sub‑task until the user confirms with "yes" or "y".
